@@ -223,6 +223,7 @@
     <Content Include="Views\Roles\Delete.cshtml" />
     <Content Include="Views\Client\Profile.cshtml" />
     <Content Include="Views\Client\CreateNewPost.cshtml" />
+    <Content Include="Views\Admin\AllPosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

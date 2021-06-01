@@ -46,7 +46,26 @@ namespace freelance.Controllers
 
         public ActionResult AllPosts()
         {
-            return View();
+            string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            string Query = "select ClientName,PostText,Date from Posts ";
+            SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
+            sqlconn.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            List<Admin> Posts = new List<Admin>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Posts.Add(new Admin
+                {
+                    Name     = Convert.ToString(dr["ClientName"]),
+                    PostText = Convert.ToString(dr["PostText"]),
+                    Date     = Convert.ToString(dr["Date"])
+                });
+            }
+            sqlconn.Close();
+            return View(Posts);
         }
     }
 }

@@ -22,6 +22,8 @@ namespace freelance.Models
         public int AccessFailedCount { set; get; }
         public string Name { set; get; }
         public string UserType { set; get; }
+        public string PostText { set; get; }
+        public string Date { set; get; }
 
     }
 }
