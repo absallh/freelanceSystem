@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Client.Models;
+using freelance.Models;
 
 namespace Client.Controllers
 {
@@ -28,13 +28,6 @@ namespace Client.Controllers
         {
             return View();
         }
-        // POST: /Client editprofile
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Profile(ClientProfile model)
-        {
-            return View(model);
-        }
+
     }
 }

@@ -339,3 +339,9 @@ F:\freelanceSystem\freelance\obj\Debug\freelance.csproj.CoreCompileInputs.cache
 F:\freelanceSystem\freelance\obj\Debug\freelance.csproj.CopyComplete
 F:\freelanceSystem\freelance\obj\Debug\freelance.dll
 F:\freelanceSystem\freelance\obj\Debug\freelance.pdb
+D:\F School\IA\freelanceSystem\freelance\bin\System.Net.Http.Formatting.dll
+D:\F School\IA\freelanceSystem\freelance\bin\System.Web.Http.dll
+D:\F School\IA\freelanceSystem\freelance\bin\System.Web.Http.WebHost.dll
+D:\F School\IA\freelanceSystem\freelance\bin\System.Net.Http.Formatting.xml
+D:\F School\IA\freelanceSystem\freelance\bin\System.Web.Http.xml
+D:\F School\IA\freelanceSystem\freelance\bin\System.Web.Http.WebHost.xml
