@@ -2162,6 +2162,10 @@ progress {
   line-height: 1.5;
 }
 
+.form-hr {
+    margin: 50px;
+    padding:50px;
+}
 .col-form-label-lg {
   padding-top: calc(0.5rem + 1px);
   padding-bottom: calc(0.5rem + 1px);
@@ -2508,6 +2512,15 @@ textarea.form-control-lg {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
+}
+
+.edit-btn
+{
+    width:100px;
+    height:30px;
+    color:white;
+    background-color:orange;
+    margin-top:8px;
 }
 .btn-check[disabled] + .btn, .btn-check:disabled + .btn {
   pointer-events: none;
