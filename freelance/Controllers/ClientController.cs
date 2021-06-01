@@ -16,10 +16,18 @@ namespace Client.Controllers
         {
             return View();
         }
+
+
+
+
         public ActionResult CreateNewPost()
         {
             return View();
         }
+
+
+
+
         public ActionResult Myposts()
         {
             return View();

@@ -30,4 +30,31 @@ namespace freelance.Models
         [Display(Name = "phone")]
         public string phone { get; set; }
     }
+
+
+
+
+    public class Post
+    {
+        [Required]
+        [Display(Name = "JobType")]
+        public string jobType { get; set; }
+
+        [Required]
+        [Display(Name = "setBudget")]
+        public double budget { get; set; }
+
+        [Required]
+        [Display(Name = "postDate")]
+        public DateTime postTime { get; set; }
+
+        [Required]
+        [Display(Name = "proposalNumber")]
+        public int proposalnum { get; set; }
+
+        [Required]
+        [Display(Name = "JobDescription")]
+        public string JobDescription { get; set; }
+    }
+  
 }
