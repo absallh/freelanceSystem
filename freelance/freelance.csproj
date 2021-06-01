@@ -147,22 +147,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\fontawesome.min.css" />
-    <Content Include="Content\templatemo-style.css" />
     <Content Include="Global.asax" />
-    <Content Include="img\arrow-down.png" />
-    <Content Include="img\avatar.png" />
-    <Content Include="img\check-mark.png" />
-    <Content Include="img\notification-01.jpg" />
-    <Content Include="img\notification-02.jpg" />
-    <Content Include="img\notification-03.jpg" />
-    <Content Include="img\product-image.jpg" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Chart.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\tooplate-scripts.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -235,12 +220,9 @@
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Delete.cshtml" />
     <Content Include="Views\Client\Profile.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Client\CreateNewPost.cshtml" />
-=======
-    <Content Include="Views\Admin\EditProfile.cshtml" />
-    <Content Include="Views\Admin\AllPosts.cshtml" />
->>>>>>> 2a21b39fd0afc0df96dcbad5ff8413e87bbba75e
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
