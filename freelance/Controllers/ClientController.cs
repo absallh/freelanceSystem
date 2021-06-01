@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Client.Models;
 
-namespace freelance.Controllers
+namespace Client.Controllers
 {
     [Authorize(Roles = "Client")]
     public class ClientController : Controller
@@ -25,6 +27,14 @@ namespace freelance.Controllers
         public ActionResult ReceivedProposals()
         {
             return View();
+        }
+        // POST: /Client editprofile
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Profile(ClientProfile model)
+        {
+            return View(model);
         }
     }
 }
