@@ -14,5 +14,15 @@ namespace freelance.Controllers
         {
             return View();
         }
+
+        public ActionResult EditProfile()
+        {
+            return View();
+        }
+
+        public ActionResult AllPosts()
+        {
+            return View();
+        }
     }
 }
