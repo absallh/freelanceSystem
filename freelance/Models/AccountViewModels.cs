@@ -74,6 +74,17 @@ namespace w.Models
         public string UserType { get; set; }
 
         [Required]
+        [Display(Name = "first Name")]
+        public string firstName { get; set; }
+
+        [Required]
+        [Display(Name = "last Name")]
+        public string lastName { get; set; }
+
+        [Display(Name = "phone")]
+        public string phone { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

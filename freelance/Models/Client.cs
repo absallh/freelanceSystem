@@ -9,29 +9,25 @@ namespace freelance.Models
     public class Client
     {
         [Required]
-        [Display(Name = "username")]
-        public string Username { get; set; }
-
-        [Required]
-        [Display(Name = "firstName")]
-        public string firstName { get; set; }
-
-        [Required]
-        [Display(Name = "lastName")]
-        public string lastName { get; set; }
-
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Required]
+        [Display(Name = "User Type")]
+        public string UserType { get; set; }
 
         [Required]
+        [Display(Name = "first Name")]
+        public string firstName { get; set; }
+
+        [Required]
+        [Display(Name = "last Name")]
+        public string lastName { get; set; }
+
         [Display(Name = "phone")]
         public string phone { get; set; }
     }
-
-
 
 
     public class Post

@@ -11,6 +11,10 @@ namespace freelance.Models
     {
         public string Id { set; get; }
         public string Email { set; get; }
+        public string fristName { set; get; }
+
+        public string lastName { set; get; }
+
         public bool EmailConfirmed { set; get; }
         public string PasswordHash { set; get; }
         public string SecurityStamp { set; get; }
