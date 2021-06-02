@@ -32,9 +32,8 @@
                                 <td>@Html.DisplayFor(Model => item.Email)</td>
                                 <td>@Html.DisplayFor(Model => item.UserType)</td>
                                 <td>
-                                    <a href="#" class="tm-product-delete-link">
-                                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                    </a>
+                                    <!--<i  class="far fa-trash-alt tm-product-delete-icon"></i>-->
+                                    <a class="btn btn-primary " onclick=""><span class="far fa-trash-alt tm-product-delete-icon"></span></a> 
                                 </td>
                             </tr>
                          }
@@ -46,7 +45,6 @@
                    class="btn btn-primary btn-block text-uppercase mb-3">Add new Member</a>
             </div>
         </div>
-
-
+     
     </div>
 </div>

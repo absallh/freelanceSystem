@@ -13,16 +13,17 @@ namespace freelance.Controllers
     [Authorize (Roles = "Admin")]
     public class AdminController : Controller
     {
+        DataSet ds;
+        string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         // GET: Admin
         public ActionResult Index()
         {
-            string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
             string Query = "select Email,PhoneNumber,UserName,UserType from AspNetUsers ";
             SqlCommand sqlcomm = new SqlCommand(Query,sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
-            DataSet ds = new DataSet();
+            ds = new DataSet();
             sda.Fill(ds);
             List<Admin> admins = new List<Admin>();
             foreach(DataRow dr in ds.Tables[0].Rows)
@@ -52,7 +53,7 @@ namespace freelance.Controllers
             SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
-            DataSet ds = new DataSet();
+            ds = new DataSet();
             sda.Fill(ds);
             List<Admin> Posts = new List<Admin>();
             foreach (DataRow dr in ds.Tables[0].Rows)
@@ -66,6 +67,12 @@ namespace freelance.Controllers
             }
             sqlconn.Close();
             return View(Posts);
+        }
+ 
+        public ActionResult DeletsPosts()
+        {
+            
+            return View();
         }
     }
 }
