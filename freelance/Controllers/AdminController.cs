@@ -50,7 +50,7 @@ namespace freelance.Controllers
         {
             string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            string Query = "select ClientName,PostText,Date from Posts ";
+            string Query = "select * from ClientPosts ";
             SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
@@ -61,6 +61,7 @@ namespace freelance.Controllers
             {
                 Posts.Add(new Admin
                 {
+                    Id       = Convert.ToString(dr["Id"]),
                     Name     = Convert.ToString(dr["ClientName"]),
                     PostText = Convert.ToString(dr["PostText"]),
                     Date     = Convert.ToString(dr["Date"])
@@ -72,8 +73,29 @@ namespace freelance.Controllers
         [HttpPost]
         public ActionResult Delete(string id)
         {
-
+            mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            sqlconn.Open();
+            SqlCommand cmd  = sqlconn.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from AspNetUsers Where Id ='"+id+"'";
+            cmd.ExecuteNonQuery();
+            sqlconn.Close();
             return RedirectToAction("Index", "Admin");
         }
+        public ActionResult DeletePosts(String id)
+        {
+            mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            sqlconn.Open();
+            SqlCommand cmd = sqlconn.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from ClientPosts Where Id =" + id + "";
+            cmd.ExecuteNonQuery();
+            sqlconn.Close();
+
+            return RedirectToAction("AllPosts", "Admin");
+        }
+
     }
 }
