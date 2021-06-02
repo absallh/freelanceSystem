@@ -68,8 +68,8 @@ namespace freelance.Controllers
             sqlconn.Close();
             return View(Posts);
         }
- 
-        public ActionResult DeletsPosts()
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
             
             return View();

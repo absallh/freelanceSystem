@@ -8,8 +8,6 @@
 </script>
 <div class="container mt-5">
     <div class="row tm-content-row">
-
-
         <div class="col-sm col-md col-lg col-xl tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-products">
                 <div class="tm-product-table-container">
@@ -24,19 +22,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach (var item in Model)
-                         {
-                            <tr>
-                                <td class="tm-product-name">@Html.DisplayFor(Model => item.Name)</td>
-                                <td>@Html.DisplayFor(Model => item.Phone)</td>
-                                <td>@Html.DisplayFor(Model => item.Email)</td>
-                                <td>@Html.DisplayFor(Model => item.UserType)</td>
-                                <td>
-                                    <!--<i  class="far fa-trash-alt tm-product-delete-icon"></i>-->
-                                    <a class="btn btn-primary " onclick=""><span class="far fa-trash-alt tm-product-delete-icon"></span></a> 
-                                </td>
-                            </tr>
-                         }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="tm-product-name">@Html.DisplayFor(Model => item.Name)</td>
+                                    <td>@Html.DisplayFor(Model => item.Phone)</td>
+                                    <td>@Html.DisplayFor(Model => item.Email)</td>
+                                    <td>@Html.DisplayFor(Model => item.UserType)</td>
+                                    <td>
+                                        <!--<i  class="far fa-trash-alt tm-product-delete-icon"></i>-->
+                                        <a class="btn btn-primary btn-sm" ><span class="far fa-trash-alt tm-product-delete-icon"></span></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -45,6 +43,6 @@
                    class="btn btn-primary btn-block text-uppercase mb-3">Add new Member</a>
             </div>
         </div>
-     
+
     </div>
 </div>
