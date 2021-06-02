@@ -19,7 +19,7 @@ namespace freelance.Controllers
         public ActionResult Index()
         {
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            string Query = "select Email,PhoneNumber,UserName,UserType from AspNetUsers ";
+            string Query = "select Email,PhoneNumber,UserName,UserType, Id from AspNetUsers ";
             SqlCommand sqlcomm = new SqlCommand(Query,sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
@@ -33,7 +33,8 @@ namespace freelance.Controllers
                     Email    = Convert.ToString(dr["Email"]),
                     Phone    = Convert.ToString(dr["PhoneNumber"]),
                     Name     = Convert.ToString(dr["UserName"]),
-                    UserType = Convert.ToString(dr["UserType"])
+                    UserType = Convert.ToString(dr["UserType"]),
+                    Id = Convert.ToString(dr["Id"])
                 });
             }
             sqlconn.Close();
@@ -69,10 +70,10 @@ namespace freelance.Controllers
             return View(Posts);
         }
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            
-            return View();
+
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

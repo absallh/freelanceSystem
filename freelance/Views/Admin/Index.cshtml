@@ -10,7 +10,15 @@
     <div class="row tm-content-row">
         <div class="col-sm col-md col-lg col-xl tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-products">
-                <div class="tm-product-table-container">
+                @using (Html.BeginForm("Delete", "Admin", FormMethod.Post, new { id = "DeleteMember", @class = "tm-product-table-container" }))
+                {
+                    <script>
+                        function submitDeleteMember(id) {
+                            document.getElementById('custId').value = id;
+                            document.getElementById('DeleteMember').submit();
+                        }
+                    </script>
+                    <input type="hidden" id="custId" name="id">
                     <table class="table table-hover tm-table-small tm-product-table">
                         <thead>
                             <tr>
@@ -31,13 +39,14 @@
                                     <td>@Html.DisplayFor(Model => item.UserType)</td>
                                     <td>
                                         <!--<i  class="far fa-trash-alt tm-product-delete-icon"></i>-->
-                                        <a class="btn btn-primary btn-sm" ><span class="far fa-trash-alt tm-product-delete-icon"></span></a>
+
+                                        <a class="btn btn-primary btn-sm" onclick="submitDeleteMember( '@Html.DisplayFor(Model => item.Id)' )"><span class="far fa-trash-alt tm-product-delete-icon"></span></a>
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                </div>
+                }
                 <!-- table container -->
                 <a href="add-product.html"
                    class="btn btn-primary btn-block text-uppercase mb-3">Add new Member</a>
