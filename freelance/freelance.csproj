@@ -174,13 +174,9 @@
     <Compile Include="Migrations\202105281244077_addcoulmn.designer.cs">
       <DependentUpon>202105281244077_addcoulmn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106021523532_enable-migrations.cs" />
-    <Compile Include="Migrations\202106021523532_enable-migrations.designer.cs">
-      <DependentUpon>202106021523532_enable-migrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106021531192_AddColumn.cs" />
-    <Compile Include="Migrations\202106021531192_AddColumn.designer.cs">
-      <DependentUpon>202106021531192_AddColumn.cs</DependentUpon>
+    <Compile Include="Migrations\202106021750115_AddColumn.cs" />
+    <Compile Include="Migrations\202106021750115_AddColumn.designer.cs">
+      <DependentUpon>202106021750115_AddColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -249,11 +245,8 @@
     <EmbeddedResource Include="Migrations\202105281244077_addcoulmn.resx">
       <DependentUpon>202105281244077_addcoulmn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106021523532_enable-migrations.resx">
-      <DependentUpon>202106021523532_enable-migrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106021531192_AddColumn.resx">
-      <DependentUpon>202106021531192_AddColumn.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106021750115_AddColumn.resx">
+      <DependentUpon>202106021750115_AddColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
