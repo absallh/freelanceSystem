@@ -96,6 +96,12 @@ namespace freelance.Controllers
 
             return RedirectToAction("AllPosts", "Admin");
         }
+        [HttpPost]
+        public ActionResult AcceptPost(String id)
+        {
+           
 
+            return RedirectToAction("AllPosts", "Admin");
+        }
     }
 }
