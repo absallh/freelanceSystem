@@ -14,47 +14,54 @@
                 <div class="tm-product-table-container">
                     @using (Html.BeginForm("DeletePosts", "Admin", FormMethod.Post, new { id = "DeletePosts", @class = "tm-product-table-container" }))
                     {
-                        <script>
-                            function submitDeletePosts(id) {
-                                document.getElementById('custId').value = id;
-                                document.getElementById('DeletePosts').submit();
-                            }
-                        </script>
-                        <input type="hidden" id="custId" name="id">
-                        <table class="table table-hover tm-table-small tm-product-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="text-align:center">MEMBER NAME</th>
-                                    <th scope="col" style="text-align:center">POST TEXT</th>
-                                    <th scope="col" style="text-align:center">DATE</th>
-                                    <th scope="col" style="text-align:center">ACCEPT/EDIT</th>
-                                    <th scope="col" style="text-align:center">DELETE</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td class="tm-product-name" style="text-align:center">@Html.DisplayFor(Model => item.Name)</td>
-                                        <td style="text-align:center">@Html.DisplayFor(Model => item.PostText)</td>
-                                        <td style="text-align:center">@Html.DisplayFor(Model => item.Date)</td>
-                                        <td style="text-align:center">
-                                            <a href="#" class="tm-product-delete-link">
-                                                <i class="fas fa-check"></i>
-                                            </a>
-                                            <a href="#" class="tm-product-delete-link">
-                                                <i class="fas fa-times"></i>
-                                            </a>
-                                        </td>
-                                        <td style="text-align:center">
-                                            <a class="tm-product-delete-link" onclick="submitDeletePosts( '@Html.DisplayFor(Model => item.Id)' )"><span class="far fa-trash-alt tm-product-delete-icon"></span></a>
-                                        </td>
-                                    </tr>
+                        @using (Html.BeginForm("AcceptPost", "Admin", FormMethod.Post, new { id = "AcceptPost", @class = "tm-product-table-container" }))
+                        {
+                            <script>
+                                function submitDeletePosts(id) {
+                                    document.getElementById('custId').value = id;
+                                    document.getElementById('DeletePosts').submit();
                                 }
-                            </tbody>
-                        </table>
-                    }
+                            </script>
+                            <script>
+                                function submitAcceptPosts(id) {
+                                    document.getElementById('custId').value = id;
+                                    document.getElementById('AcceptPost').submit();
+                                }
+                            </script>
+                            <input type="hidden" id="custId" name="id">
+                            <table class="table table-hover tm-table-small tm-product-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="text-align:center">MEMBER NAME</th>
+                                        <th scope="col" style="text-align:center">POST TEXT</th>
+                                        <th scope="col" style="text-align:center">DATE</th>
+                                        <th scope="col" style="text-align:center">ACCEPT/EDIT</th>
+                                        <th scope="col" style="text-align:center">DELETE</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="tm-product-name" style="text-align:center">@Html.DisplayFor(Model => item.Name)</td>
+                                            <td style="text-align:center">@Html.DisplayFor(Model => item.PostText)</td>
+                                            <td style="text-align:center">@Html.DisplayFor(Model => item.Date)</td>
+                                            <td style="text-align:center">
+
+                                                <a class="tm-product-delete-link" onclick="submitAcceptPosts( '@Html.DisplayFor(Model => item.Id)' )"><span class="fas fa-check"></span></a>
+                                                <a href="#" class="tm-product-delete-link">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <a class="tm-product-delete-link" onclick="submitDeletePosts( '@Html.DisplayFor(Model => item.Id)' )"><span class="far fa-trash-alt tm-product-delete-icon"></span></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }}
                     </div>
             </div>
         </div>
