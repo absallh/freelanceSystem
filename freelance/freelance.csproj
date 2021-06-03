@@ -150,8 +150,9 @@
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\fontastic.css" />
     <Content Include="Content\css\grasp_mobile_progress_circle-1.0.0.min.css" />
+    <Content Include="Content\css\popup.css" />
+    <Content Include="Scripts\js\popup.js" />
     <Content Include="Content\css\style.blue.css" />
-    <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\style.green.css" />
     <Content Include="Content\css\style.pink.css" />
@@ -160,6 +161,7 @@
     <Content Include="Content\css\style.violet.css" />
     <Content Include="Content\fonts\dashboard.svg" />
     <Content Include="Content\LoginStyle.css" />
+    <Content Include="Content\radioInput.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -383,7 +385,6 @@
     <Content Include="Content\fonts\dashboard.eot" />
     <Content Include="Content\fonts\dashboard.ttf" />
     <Content Include="Content\fonts\dashboard.woff" />
-    <Content Include="Content\InputStyle.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Shared\_FactoryLayout.cshtml" />

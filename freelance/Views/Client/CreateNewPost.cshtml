@@ -5,48 +5,25 @@
     Layout = "~/Views/Shared/_FactoryLayout.cshtml";
 }
 
+<div class="addPostBody">
+    <div class="createPost" id="app">
+        <div class="add-product" :class="{'open': formOpen}">
+            <div class="button-copy" v-show="!formOpen" @@click="formOpen = true">Add Product</div>
+            <form class="createPostForm">
 
-<img class="wave" src="~/img/wave.png">
-<div class="container">
-    <div class="img">
-        <img src="~/img/bg.svg">
-    </div>
-    <div class="login-content">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <img src="~/img/avatar.svg">
-            <h2 class="title">Create Post <i class="fas fa-plus"></i></h2>
-            <div class="input-div one">
-                <div class="form">
-
-                    <div class="inputGroup">
-                        <input id="radio1" name="radio" type="radio" />
-                        <label for="radio1">Yes</label>
-                    </div>
-                    <div class="inputGroup">
-                        <input id="radio2" name="radio" type="radio" />
-                        <label for="radio2">No</label>
-                    </div>
+                <div class="form--field">
+                    <label>Product Price *</label>
+                    <span class="form--price">$</span>
+                    <input type="text" class="form--element" name="price" v-model="productData.price" placeholder="Price" required="" min="0" max="500" pattern="\d+(\.\d{2})?">
                 </div>
-            </div>
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fas fa-user"></i>
+                <div class="form--field">
+                    <label>Product Description</label>
+                    <textarea class="form--element textarea" v-model="productData.description" placeholder="Description"></textarea>
                 </div>
-                <div class="div">
-                    <h5>post type</h5>
-                    <input type="text" class="input">
-                </div>
-            </div>
 
-            <div class="wrap-input1 validate-input" data-validate="Message is required">
-                <textarea class="input1" name="message" placeholder="Message"></textarea>
-                <span class="shadow-input1"></span>
-            </div>
-            <input type="submit" class="btn" value="publish">
-        }
+                <button type="submit" class="submit-button">Add Product</button>
+                <div class="cancel"><span @@click="cancel()">Cancel</span></div>
+            </form>
+        </div>
     </div>
 </div>
-<script type="text/javascript" src="~/Scripts/js/main.js"></script>

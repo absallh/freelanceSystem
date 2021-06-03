@@ -7,7 +7,7 @@
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "sign-in-form", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 <h2 class="title">Sign in</h2>
@@ -24,6 +24,22 @@
                 </div>
                 <input type="submit" value="Log in" class="btn solid" />
             }
+            <form action="#" class="sign-up-form">
+                <h2 class="title">Sign up</h2>
+                <div class="input-field">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <input type="text" placeholder="Username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <input type="submit" class="btn" value="Sign up">
+            </form>
         </div>
     </div>
 
