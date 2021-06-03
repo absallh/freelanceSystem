@@ -39,7 +39,7 @@
                                     <td>@Html.DisplayFor(Model => item.UserType)</td>
                                     <td>
                                         <!--<i  class="far fa-trash-alt tm-product-delete-icon"></i>-->
-                                        <a class="btn btn-primary btn-sm" onclick="submitDeleteMember( '@Html.DisplayFor(Model => item.Id)' )"><span class="far fa-trash-alt tm-product-delete-icon"></span></a>
+                                        <a class="tm-product-delete-link" onclick="submitDeleteMember( '@Html.DisplayFor(Model => item.Id)' )"><span class="far fa-trash-alt tm-product-delete-icon"></span></a>
                                     </td>
                                 </tr>
                             }
