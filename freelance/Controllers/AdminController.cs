@@ -99,7 +99,6 @@ namespace freelance.Controllers
         [HttpPost]
         public ActionResult AcceptPost(String id)
         {
-           
 
             return RedirectToAction("AllPosts", "Admin");
         }

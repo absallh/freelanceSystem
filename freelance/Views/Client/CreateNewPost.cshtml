@@ -11,6 +11,18 @@
             <div class="button-copy" v-show="!formOpen" @@click="formOpen = true">Add Product</div>
             <form class="createPostForm">
 
+                <div class="radioform">
+
+                    <div class="inputGroup">
+                        <input id="radio1" name="radio" type="radio" />
+                        <label for="radio1">Fixed</label>
+                    </div>
+                    <div class="inputGroup">
+                        <input id="radio2" name="radio" type="radio" />
+                        <label for="radio2">Houly</label>
+                    </div>
+                </div>
+
                 <div class="form--field">
                     <label>Product Price *</label>
                     <span class="form--price">$</span>

@@ -3,6 +3,14 @@
     ViewBag.Title = "Myposts";
     Layout = "~/Views/Shared/_FactoryLayout.cshtml";
 }
+
+<div class="search-wrapper">
+    <div class="input-holder">
+        <input type="text" class="search-input" id="postsSearch" placeholder="Type to search" />
+        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+    </div>
+    <span class="close" onclick="searchToggle(this, event);"></span>
+</div>
 <section class="mt-30px mb-30px">
     <div class="container-fluid">
         <div class="row">
