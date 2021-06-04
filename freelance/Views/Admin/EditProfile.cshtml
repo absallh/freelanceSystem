@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "EditProfile";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    
 }
 
 <script>
@@ -28,7 +29,7 @@
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
                 <h2 class="tm-block-title">Account Settings</h2>
-                <form action="" class="tm-signup-form row">
+                <form action="EditProfile" class="tm-signup-form row" method="post">
                     <div class="form-group col-lg-6">
                         <label for="fname">First Name</label>
                         <input name="fname"

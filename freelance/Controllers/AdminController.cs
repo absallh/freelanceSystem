@@ -41,8 +41,16 @@ namespace freelance.Controllers
             return View(admins);
         }
 
-        public ActionResult EditProfile()
+        public ActionResult EditProfile(string fname, string lname, string email,string phone, string password)
         {
+            mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            sqlconn.Open();
+            SqlCommand cmd = sqlconn.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update AspNetUsers set firstName='"+ fname + "',lastName= '"+ lname + "',PhoneNumber = '"+ phone + "'  Where Email = '" + email + "'";
+            cmd.ExecuteNonQuery();
+            sqlconn.Close();
             return View();
         }
 
@@ -64,7 +72,8 @@ namespace freelance.Controllers
                     Id       = Convert.ToString(dr["Id"]),
                     Name     = Convert.ToString(dr["ClientName"]),
                     PostText = Convert.ToString(dr["PostText"]),
-                    Date     = Convert.ToString(dr["Date"])
+                    Date     = Convert.ToString(dr["Date"]),
+                    State    = Convert.ToString(dr["Accept"])
                 });
             }
             sqlconn.Close();
@@ -98,6 +107,19 @@ namespace freelance.Controllers
         }
         [HttpPost]
         public ActionResult AcceptPost(String id)
+        {
+            mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            sqlconn.Open();
+            SqlCommand cmd = sqlconn.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update ClientPosts set Accept='accept' Where Id =" + id + "";
+            cmd.ExecuteNonQuery();
+            sqlconn.Close();
+            return RedirectToAction("AllPosts", "Admin");
+        }
+        [HttpPost]
+        public ActionResult EditPost(String id)
         {
 
             return RedirectToAction("AllPosts", "Admin");

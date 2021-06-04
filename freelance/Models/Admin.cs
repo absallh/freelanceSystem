@@ -28,6 +28,7 @@ namespace freelance.Models
         public string UserType { set; get; }
         public string PostText { set; get; }
         public string Date { set; get; }
+        public string State { set; get; }
 
     }
 }
