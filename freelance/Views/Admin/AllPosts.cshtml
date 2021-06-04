@@ -49,6 +49,7 @@
                                     <th scope="col" style="text-align:center">MEMBER NAME</th>
                                     <th scope="col" style="text-align:center">POST TEXT</th>
                                     <th scope="col" style="text-align:center">DATE</th>
+                                    <th scope="col" style="text-align:center">BUDGET</th>
                                     <th scope="col" style="text-align:center">CURRENT STATE</th>
                                     <th scope="col" style="text-align:center">ACCEPT/EDIT</th>
                                     <th scope="col" style="text-align:center">DELETE</th>
@@ -62,6 +63,7 @@
                                     <td class="tm-product-name" style="text-align:center">@Html.DisplayFor(Model => item.Name)</td>
                                     <td style="text-align:center">@Html.DisplayFor(Model => item.PostText)</td>
                                     <td style="text-align:center">@Html.DisplayFor(Model => item.Date)</td>
+                                    <td style="text-align:center">@Html.DisplayFor(Model => item.Budget)</td>
                                     <td style="text-align:center">@Html.DisplayFor(Model => item.State)</td>
                                     <td style="text-align:center">
                                         <a class="tm-product-delete-link" onclick="submitAcceptPosts( '@Html.DisplayFor(Model => item.Id)' )"><span class="fas fa-check"></span></a>

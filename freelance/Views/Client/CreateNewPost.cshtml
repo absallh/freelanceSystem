@@ -4,7 +4,16 @@
     ViewBag.Title = "CreateNewPost";
     Layout = "~/Views/Shared/_FactoryLayout.cshtml";
 }
-
+@using (Html.BeginForm("CreatePost", "Client", FormMethod.Post, new { id ="EditPost", @class = "displaynone" }))
+{
+    <input type="hidden" id="actionType" name="custId" />
+}
+<script>
+    function submitEditPosts(id) {
+        document.getElementById('custId').value = id;
+        document.getElementById('EditPost').submit();
+    }
+</script>
 <div class="addPostBody">
     <div class="createPost" id="app">
         <div class="add-product" :class="{'open': formOpen}">
@@ -14,22 +23,22 @@
                 <div class="radioform">
 
                     <div class="inputGroup">
-                        <input id="radio1" name="radio" type="radio" />
+                        <input id="radio1" name="radio" type="radio" value="Fixed" onclick="submitEditPosts('5')" />
                         <label for="radio1">Fixed</label>
                     </div>
                     <div class="inputGroup">
-                        <input id="radio2" name="radio" type="radio" />
+                        <input id="radio2" name="radio" type="radio" value="Houly" />
                         <label for="radio2">Houly</label>
                     </div>
                 </div>
 
                 <div class="form--field">
-                    <label>Product Price *</label>
+                    <label>Jop Budget</label>
                     <span class="form--price">$</span>
                     <input type="text" class="form--element" name="price" v-model="productData.price" placeholder="Price" required="" min="0" max="500" pattern="\d+(\.\d{2})?">
                 </div>
                 <div class="form--field">
-                    <label>Product Description</label>
+                    <label>Jop Description</label>
                     <textarea class="form--element textarea" v-model="productData.description" placeholder="Description"></textarea>
                 </div>
 

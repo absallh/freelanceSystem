@@ -58,7 +58,7 @@ namespace freelance.Controllers
         {
             string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            string Query = "select * from ClientPosts ";
+            string Query = "select * from Posts ";
             SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
@@ -73,7 +73,8 @@ namespace freelance.Controllers
                     Name     = Convert.ToString(dr["ClientName"]),
                     PostText = Convert.ToString(dr["PostText"]),
                     Date     = Convert.ToString(dr["Date"]),
-                    State    = Convert.ToString(dr["Accept"])
+                    State    = Convert.ToString(dr["Accept"]),
+                    Budget   = Convert.ToString(dr["JopBudget"]) 
                 });
             }
             sqlconn.Close();
@@ -99,7 +100,7 @@ namespace freelance.Controllers
             sqlconn.Open();
             SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from ClientPosts Where Id =" + id + "";
+            cmd.CommandText = "delete from Posts Where Id =" + id + "";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
 
@@ -113,7 +114,7 @@ namespace freelance.Controllers
             sqlconn.Open();
             SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update ClientPosts set Accept='accept' Where Id =" + id + "";
+            cmd.CommandText = "update Posts set Accept='accept' Where Id =" + id + "";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
             return RedirectToAction("AllPosts", "Admin");
