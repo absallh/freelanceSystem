@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -80,6 +81,17 @@ namespace w.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await SignInManager.UserManager.FindByEmailAsync(model.Email);
+                    IList<string> roles = await SignInManager.UserManager.GetRolesAsync(user.Id);
+                    if (roles.ElementAt(0).ToString().Equals("Admin"))
+                    {
+                        return RedirectToLocal("~/Admin/");
+                    }else if (roles.ElementAt(0).ToString().Equals("Client")) {
+                        return RedirectToLocal("~/Client/Profile");
+                    }else if (roles.ElementAt(0).ToString().Equals("Freelancer"))
+                    {
+                        return RedirectToLocal("~/Freelancer/Index");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

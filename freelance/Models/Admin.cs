@@ -16,7 +16,7 @@ namespace freelance.Models
         public string lastName { set; get; }
 
         public bool EmailConfirmed { set; get; }
-        public string PasswordHash { set; get; }
+        public string Password { set; get; }
         public string SecurityStamp { set; get; }
         public string Phone { set; get; }
         public bool PhoneNumberConfirmed { set; get; }

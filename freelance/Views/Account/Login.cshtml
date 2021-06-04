@@ -14,12 +14,12 @@
                 <div class="input-field">
                     <i class="fas fa-user"></i>
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
                     @Html.CheckBoxFor(m => m.RememberMe, new { @class = "displayNone" })
                 </div>
                 <input type="submit" value="Log in" class="btn solid" />
