@@ -152,6 +152,7 @@
     <Content Include="Content\css\grasp_mobile_progress_circle-1.0.0.min.css" />
     <Content Include="Content\css\popup.css" />
     <Content Include="Content\css\PopupLogin.css" />
+    <Content Include="Content\css\PostsCard.css" />
     <Content Include="Content\searchInput.css" />
     <Content Include="Scripts\js\popup.js" />
     <Content Include="Content\css\style.blue.css" />

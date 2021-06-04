@@ -68,12 +68,13 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Audiowide%7CRoboto+Condensed" rel="stylesheet">
-    <link href="~/Content/Massege.css" />   
+    <link href="~/Content/Massege.css" />
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/radioInput.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/css/popup.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/searchInput.css" />
+
 </head>
 <body>
     <div class="page">
@@ -196,7 +197,7 @@
                                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                                 @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
                                             </div>
-                                            <input type="submit" value="Log in" class="btn solid" style="background-color:green; color:white; margin:10px auto" />
+                                            <input type="submit" value="Log in" class="btn solid" @*style="background-color:green; color:white; margin:10px auto*@@*"*@ />
                                         }
                                     </div>
                                 </div>
