@@ -16,9 +16,10 @@ namespace freelance.Controllers
         DataSet ds;
         string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(string email)
         {
             SqlConnection sqlconn = new SqlConnection(mainconn);
+            string Query2 = "select PhoneNumber,UserName,UserType, Id from AspNetUsers where Email ='"+ email+"'";
             string Query = "select Email,PhoneNumber,UserName,UserType, Id from AspNetUsers ";
             SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
@@ -52,6 +53,7 @@ namespace freelance.Controllers
             cmd.ExecuteNonQuery();
             sqlconn.Close();
             return View();
+            
         }
 
         public ActionResult AllPosts()
