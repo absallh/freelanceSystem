@@ -36,9 +36,7 @@
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
                 <h2 class="tm-block-title">Account Settings</h2>
-                @using (Html.BeginForm("EditProfile", "Admin", FormMethod.Post, new { @class = "tm-signup-form row" }))
-                {
-                    @Html.AntiForgeryToken()
+                <form action="EditProfile" class="tm-signup-form row" method="post">
                     <input type="hidden" id="Checkvalue" name="Checkvalue" value="false">
 
                     <div class="form-group col-lg-6">
@@ -51,8 +49,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="email">Account Email</label>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control validate", 
-                                                                                           disabled = "disabled", style = "color: black" } })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control validate" } })
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">Phone</label>
@@ -72,7 +69,7 @@
                             UPDATE YOUR PROFILE
                         </button>
                     </div>
-                }
+                </form>
             </div>
         </div>
     </div>

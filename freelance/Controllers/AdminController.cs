@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.AspNet.Identity;
+using w.Models;
 
 namespace freelance.Controllers
 {
@@ -15,13 +17,19 @@ namespace freelance.Controllers
     {
         DataSet ds;
         string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private ApplicationDbContext db;
+
+        public AdminController()
+        {
+            db = new ApplicationDbContext();
+        }
         // GET: Admin
         public ActionResult Index(string email)
         {
             SqlConnection sqlconn = new SqlConnection(mainconn);
             string Query2 = "select PhoneNumber,UserName,UserType, Id from AspNetUsers where Email ='"+ email+"'";
             string Query = "select Email,PhoneNumber,UserName,UserType, Id from AspNetUsers ";
-            SqlCommand sqlcomm = new SqlCommand(Query2, sqlconn);
+            SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
             ds = new DataSet();
@@ -31,7 +39,7 @@ namespace freelance.Controllers
             {
                 admins.Add(new Admin
                 {
-                    Email = email,
+                    Email = Convert.ToString(dr["Email"]),
                     Phone = Convert.ToString(dr["PhoneNumber"]),
                     Name = Convert.ToString(dr["UserName"]),
                     UserType = Convert.ToString(dr["UserType"]),
@@ -42,24 +50,34 @@ namespace freelance.Controllers
             return View(admins);
         }
 
-        public ActionResult EditProfile(string fname, string lname, string email, string phone, string password)
+        public ActionResult EditProfile()
+        {
+            var userID = User.Identity.GetUserId();
+            var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
+            RegisterViewModel model = new RegisterViewModel
+            {
+                Email = user.Email,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                UserType = user.UserType,
+                phone = user.PhoneNumber
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(RegisterViewModel model)
         {
             mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
             sqlconn.Open();
             SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update AspNetUsers set firstName='" + fname + "',lastName= '" + lname + "',PhoneNumber = '" + phone + "'  Where Email = '" + email + "'";
+            cmd.CommandText = "update AspNetUsers set firstName='" + model.firstName + "',lastName= '" + model.lastName 
+                + "',PhoneNumber = '" + model.phone + "'  Where Email = '" + model.Email + "'";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
             return View();
-            
-        }
-
-        [HttpPost]
-        public ActionResult EditProfile (string name)
-        {
-            return RedirectToAction("Index", "Admin");
         }
 
         public ActionResult AllPosts()
