@@ -56,6 +56,12 @@ namespace freelance.Controllers
             
         }
 
+        [HttpPost]
+        public ActionResult EditProfile (string name)
+        {
+            return RedirectToAction("Index", "Admin");
+        }
+
         public ActionResult AllPosts()
         {
             string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -126,6 +132,14 @@ namespace freelance.Controllers
         {
 
             return RedirectToAction("AllPosts", "Admin");
+        }
+        public ActionResult EditClientPost(string id)
+        {
+            return View();
+        }
+        public ActionResult EditMember(string id)
+        {
+            return View();
         }
     }
 }

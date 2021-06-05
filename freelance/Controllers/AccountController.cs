@@ -85,12 +85,12 @@ namespace w.Controllers
                     IList<string> roles = await SignInManager.UserManager.GetRolesAsync(user.Id);
                     if (roles.ElementAt(0).ToString().Equals("Admin"))
                     {
-                        return RedirectToLocal("~/Admin/");
+                        return RedirectToLocal("~/Admin/?email="+user.Email);
                     }else if (roles.ElementAt(0).ToString().Equals("Client")) {
-                        return RedirectToLocal("~/Client/Profile");
+                        return RedirectToLocal("~/Client/Profile?email=" + user.Email);
                     }else if (roles.ElementAt(0).ToString().Equals("Freelancer"))
                     {
-                        return RedirectToLocal("~/Freelancer/Index");
+                        return RedirectToLocal("~/Freelancer/Index?email=" + user.Email);
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
