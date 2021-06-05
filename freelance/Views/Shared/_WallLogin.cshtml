@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
-@using w.Models
-@model  w.Models.RegisterViewModel
+﻿@model  w.Models.LoginRegisterViewModel
 
 
 @if (Request.IsAuthenticated)
@@ -66,44 +64,44 @@ else
 
                         @Html.ValidationSummary("", new { @class = "text-danger" })
                         <div class="form-group">
-                            @Html.LabelFor(m => m.firstName, new { @class = "col-md-8 control-label" })
+                            @Html.LabelFor(m => m.register.firstName, new { @class = "col-md-8 control-label" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.register.firstName, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(m => m.lastName, new { @class = "col-md-8 control-label" })
+                            @Html.LabelFor(m => m.register.lastName, new { @class = "col-md-8 control-label" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.lastName, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.register.lastName, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(m => m.Email, new { @class = "col-md-8 control-label" })
+                            @Html.LabelFor(m => m.register.Email, new { @class = "col-md-8 control-label" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.register.Email, new { @class = "form-control" })
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(m => m.UserType, htmlAttributes: new { @class = "control-label col-md-8" })
+                            @Html.LabelFor(m => m.register.UserType, htmlAttributes: new { @class = "control-label col-md-8" })
                             <div class="col-md-10">
                                 Client
-                                @Html.RadioButtonFor(m => m.UserType, "Client")
+                                @Html.RadioButtonFor(m => m.register.UserType, "Client")
                                 Freelancer
-                                @Html.RadioButtonFor(m => m.UserType, "Freelancer")
+                                @Html.RadioButtonFor(m => m.register.UserType, "Freelancer")
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-8 control-label" })
+                            @Html.LabelFor(m => m.register.Password, new { @class = "col-md-8 control-label" })
                             <div class="col-md-10">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.PasswordFor(m => m.register.Password, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-8 control-label" })
+                            @Html.LabelFor(m => m.register.ConfirmPassword, new { @class = "col-md-8 control-label" })
                             <div class="col-md-10">
-                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                @Html.PasswordFor(m => m.register.ConfirmPassword, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
@@ -199,11 +197,11 @@ else
                             @Html.AntiForgeryToken()
                             <label>
                                 <div class="fa fa-phone"></div>
-                                @Html.TextBoxFor(m => m.Email, new { @class = "username", placeholder = "User Name" })
+                                @Html.TextBoxFor(m => m.login.Email, new { @class = "username", placeholder = "User Name" })
                             </label>
                             <label>
                                 <div class="fa fa-commenting"></div>
-                                @Html.PasswordFor(m => m.Password, new { @class = "password", placeholder = "Password" })
+                                @Html.PasswordFor(m => m.login.Password, new { @class = "password", placeholder = "Password" })
                                 <button type="button" class="password-button">Show Pass</button>
                             </label>
                             <button class="login-button">Log in</button>

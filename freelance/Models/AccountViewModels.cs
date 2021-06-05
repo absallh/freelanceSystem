@@ -97,6 +97,12 @@ namespace w.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class LoginRegisterViewModel
+    {
+        public LoginViewModel login { get; set; }
+        public RegisterViewModel register { get; set; }
+    }
+
     public class ResetPasswordViewModel
     {
         [Required]

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using freelance.Models;
+using Microsoft.AspNet.Identity;
+using w.Models;
 
 namespace Client.Controllers
 {
@@ -16,12 +18,38 @@ namespace Client.Controllers
     {
         DataSet ds;
         string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        String ClientEmail;
-        // GET: Client
-        public new ActionResult Profile(string Email)
+        private ApplicationDbContext db;
+        public ClientController()
         {
-            ClientEmail = Email;
-            return View();
+            db = new ApplicationDbContext();
+        }
+        // GET: Client
+        public new ActionResult Profile()
+        {
+            var userID = User.Identity.GetUserId();
+            var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
+            RegisterViewModel model = new RegisterViewModel
+            {
+                Email = user.Email,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                UserType = user.UserType,
+                phone = user.PhoneNumber
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public new ActionResult Profile(RegisterViewModel Model)
+        {
+            var userID = User.Identity.GetUserId();
+            var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
+            user.firstName = Model.firstName;
+            user.lastName = Model.lastName;
+            user.PhoneNumber = Model.phone;
+            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return View(Model);
         }
 
         public ActionResult CreateNewPost(string id, string Description, string Price)
