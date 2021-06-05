@@ -150,10 +150,12 @@
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\fontastic.css" />
     <Content Include="Content\css\grasp_mobile_progress_circle-1.0.0.min.css" />
+    <Content Include="Content\css\LoginPopup.css" />
     <Content Include="Content\css\popup.css" />
     <Content Include="Content\css\PopupLogin.css" />
     <Content Include="Content\css\PostsCard.css" />
     <Content Include="Content\searchInput.css" />
+    <Content Include="Scripts\js\freelancerSearch.js" />
     <Content Include="Scripts\js\popup.js" />
     <Content Include="Content\css\style.blue.css" />
     <Content Include="Content\css\style.default.css" />
@@ -335,6 +337,7 @@
     <Content Include="Scripts\js\front.js" />
     <Content Include="Scripts\js\grasp_mobile_progress_circle-1.0.0.min.js" />
     <Content Include="Scripts\js\main.js" />
+    <Content Include="Scripts\LoginPopup.js" />
     <Content Include="Scripts\searchInput.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -428,7 +431,7 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Admin\EditProfile.cshtml" />
-    <Content Include="Views\Shared\StartView.cshtml" />
+    <Content Include="Views\Freelancer\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

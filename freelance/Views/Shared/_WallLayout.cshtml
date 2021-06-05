@@ -71,6 +71,9 @@
     <link rel="stylesheet" type="text/css" href="~/Content/radioInput.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/css/popup.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/searchInput.css" />
+    <link href="~/Content/css/PostsCard.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/LoginPopup.css" />
 </head>
 <body>
     <div class="page">
@@ -80,19 +83,15 @@
                 <div class="container-fluid">
                     <div class="navbar-holder d-flex align-items-center justify-content-between">
                         <div class="navbar-header">
-                            <a href="#" class="navbar-brand">
+                            <a class="navbar-brand">
                                 <div class="brand-text d-none d-md-inline-block"><span>Get Your Job </span><strong class="text-primary">Here</strong></div>
                             </a>
                         </div>
-                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoff" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link d-block" href="javascript:document.getElementById('logoff').submit()" style="margin-left:10px">Logout</a>
-                                </li>
-                            </ul>
-                        }
+
+
+
+                        @Html.Partial("_WallLogin")
+
                     </div>
                 </div>
             </nav>
@@ -122,6 +121,8 @@
     <!-- Main File-->
     <script src="~/Scripts/js/front.js"></script>
     <script src="~/Scripts/js/popup.js"></script>
-    <script src="~/Scripts/searchInput.js"></script>
+    <script src="~/Scripts/js/freelancerSearch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+    <script src="~/Scripts/LoginPopup.js"></script>
 </body>
 </html>

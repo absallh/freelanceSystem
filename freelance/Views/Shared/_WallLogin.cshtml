@@ -1,28 +1,218 @@
 ﻿@using Microsoft.AspNet.Identity
+@using w.Models
+@model  w.Models.RegisterViewModel
+
 
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoff" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                @Html.ActionLink("Hi, "+User.Identity.GetUserName(), "Index", "Manage", null, new { @class = "nav-link" })
+<ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+    <!-- Notifications dropdown-->
+    <li class="nav-item dropdown">
+        <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bars" aria-hidden="true"></i></a>
+        <ul aria-labelledby="notifications" class="dropdown-menu">
+            <li>
+                <a rel="nofollow" href="#" class="dropdown-item">
+                    <div class="notification d-flex justify-content-between">
+                        <div class="notification-content"><i class="fa fa-home" aria-hidden="true"></i>Home</div>
+                    </div>
+                </a>
             </li>
+            <li>
+                <a rel="nofollow" href="#" class="dropdown-item">
+                    <div class="notification d-flex justify-content-between">
+                        <div class="notification-content"><i class="fa fa-user" aria-hidden="true"></i>Edit Profile</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a rel="nofollow" href="#" class="dropdown-item">
+                    <div class="notification d-flex justify-content-between">
+                        <div class="notification-content"><i class="fa fa-bookmark" aria-hidden="true"></i>Saved Posts</div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </li>
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoff" }))
+    { 
+        @Html.AntiForgeryToken()
+        <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="javascript:document.getElementById('logoff').submit()">Logout</a>
+                <a class="nav-link d-block" href="javascript:document.getElementById('logoff').submit()" style="margin-left:10px">Logout</a>
             </li>
         </ul>
     }
+</ul>
 }
 else
 {
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link" href="~/Account/Register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="~/Account/Login">Login</a>
-        </li>
-    </ul>
+    <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="#firstModal" class="trigger-btn" data-toggle="modal" style="margin-left:650px">Sign Up</a>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="firstModal" class="modal fade">
+        <div class="modal-dialog contact-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Registration</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.firstName, new { @class = "col-md-8 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.lastName, new { @class = "col-md-8 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.lastName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-8 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UserType, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-10">
+                                Client
+                                @Html.RadioButtonFor(m => m.UserType, "Client")
+                                Freelancer
+                                @Html.RadioButtonFor(m => m.UserType, "Freelancer")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-8 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-8 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default" value="Register" />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--login and Registeration here-->
+    <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="#myModal" class="trigger-btn" data-toggle="modal"> Sign In</a>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header" style="background-image: linear-gradient(to top right, #f9a743, #f9db5f)">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body" style="background-image: linear-gradient(to top right, #f9a743, #f9db5f)">
+
+                    <div class="center">
+                        <div class="ear ear--left"></div>
+                        <div class="ear ear--right"></div>
+                        <div class="face">
+                            <div class="eyes">
+                                <div class="eye eye--left">
+                                    <div class="glow"></div>
+                                </div>
+                                <div class="eye eye--right">
+                                    <div class="glow"></div>
+                                </div>
+                            </div>
+                            <div class="nose">
+                                <svg width="38.161" height="22.03">
+                                    <path d="M2.017 10.987Q-.563 7.513.157 4.754C.877 1.994 2.976.135 6.164.093 16.4-.04 22.293-.022 32.048.093c3.501.042 5.48 2.081 6.02 4.661q.54 2.579-2.051 6.233-8.612 10.979-16.664 11.043-8.053.063-17.336-11.043z" fill="#243946"></path>
+                                </svg>
+                                <div class="glow"></div>
+                            </div>
+                            <div class="mouth">
+                                <svg class="smile" viewBox="-2 -2 84 23" width="84" height="23">
+                                    <path d="M0 0c3.76 9.279 9.69 18.98 26.712 19.238 17.022.258 10.72.258 28 0S75.959 9.182 79.987.161" fill="none" stroke-width="3" stroke-linecap="square" stroke-miterlimit="3"></path>
+                                </svg>
+                                <div class="mouth-hole"></div>
+                                <div class="tongue breath">
+                                    <div class="tongue-top"></div>
+                                    <div class="line"></div>
+                                    <div class="median"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hands">
+                            <div class="hand hand--left">
+                                <div class="finger">
+                                    <div class="bone"></div>
+                                    <div class="nail"></div>
+                                </div>
+                                <div class="finger">
+                                    <div class="bone"></div>
+                                    <div class="nail"></div>
+                                </div>
+                                <div class="finger">
+                                    <div class="bone"></div>
+                                    <div class="nail"></div>
+                                </div>
+                            </div>
+                            <div class="hand hand--right">
+                                <div class="finger">
+                                    <div class="bone"></div>
+                                    <div class="nail"></div>
+                                </div>
+                                <div class="finger">
+                                    <div class="bone"></div>
+                                    <div class="nail"></div>
+                                </div>
+                                <div class="finger">
+                                    <div class="bone"></div>
+                                    <div class="nail"></div>
+                                </div>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <label>
+                                <div class="fa fa-phone"></div>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "username", placeholder = "User Name" })
+                            </label>
+                            <label>
+                                <div class="fa fa-commenting"></div>
+                                @Html.PasswordFor(m => m.Password, new { @class = "password", placeholder = "Password" })
+                                <button type="button" class="password-button">Show Pass</button>
+                            </label>
+                            <button class="login-button">Log in</button>
+                        }
+
+                        <div class="footer">Freelancing System</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }
