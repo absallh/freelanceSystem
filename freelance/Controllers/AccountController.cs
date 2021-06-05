@@ -85,7 +85,7 @@ namespace w.Controllers
                     IList<string> roles = await SignInManager.UserManager.GetRolesAsync(user.Id);
                     if (roles.ElementAt(0).ToString().Equals("Admin"))
                     {
-                        return RedirectToLocal("~/Admin/?email="+user.Email);
+                        return RedirectToLocal("~/Admin/?email="+user.Email);//get the email of the user
                     }else if (roles.ElementAt(0).ToString().Equals("Client")) {
                         return RedirectToLocal("~/Client/Profile?email=" + user.Email);
                     }else if (roles.ElementAt(0).ToString().Equals("Freelancer"))

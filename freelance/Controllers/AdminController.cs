@@ -21,7 +21,7 @@ namespace freelance.Controllers
             SqlConnection sqlconn = new SqlConnection(mainconn);
             string Query2 = "select PhoneNumber,UserName,UserType, Id from AspNetUsers where Email ='"+ email+"'";
             string Query = "select Email,PhoneNumber,UserName,UserType, Id from AspNetUsers ";
-            SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
+            SqlCommand sqlcomm = new SqlCommand(Query2, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
             ds = new DataSet();
@@ -31,7 +31,7 @@ namespace freelance.Controllers
             {
                 admins.Add(new Admin
                 {
-                    Email = Convert.ToString(dr["Email"]),
+                    Email = email,
                     Phone = Convert.ToString(dr["PhoneNumber"]),
                     Name = Convert.ToString(dr["UserName"]),
                     UserType = Convert.ToString(dr["UserType"]),
