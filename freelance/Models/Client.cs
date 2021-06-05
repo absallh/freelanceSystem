@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace freelance.Models
 {
+    [Table("Table")]
     public class Client
     {
         [Required]
@@ -32,8 +33,7 @@ namespace freelance.Models
 
     public class Post
     {
-        [Required]
-        [Display(Name = "JobType")]
+       
         public string jobType { get; set; }
 
         [Required]
@@ -52,5 +52,5 @@ namespace freelance.Models
         [Display(Name = "JobDescription")]
         public string JobDescription { get; set; }
     }
-  
+
 }

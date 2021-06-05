@@ -14,10 +14,13 @@ namespace Client.Controllers
     [Authorize(Roles = "Client")]
     public class ClientController : Controller
     {
+        DataSet ds;
         string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        String ClientEmail;
         // GET: Client
-        public new ActionResult Profile()
+        public new ActionResult Profile(string Email)
         {
+            ClientEmail = Email;
             return View();
         }
 
@@ -37,9 +40,26 @@ namespace Client.Controllers
             return View();
         }
 
-        public ActionResult Myposts()
+        public ActionResult Myposts(string Email)
         {
-            return View();
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            string Query = "Select ClientName,PostText from Posts where ClientEmail='" + Email + "'";
+            SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
+            sqlconn.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+            ds = new DataSet();
+            sda.Fill(ds);
+            List<Post> posts = new List<Post>();
+            foreach (DataRow de in ds.Tables[0].Rows)
+            {
+                posts.Add(new Post
+                {
+                    jobType = Convert.ToString(de["ClientName"]),
+                    JobDescription = Convert.ToString(de["PostText"])
+                });
+            }
+            sqlconn.Close();
+            return View(posts);
         }
         public ActionResult ReceivedProposals()
         {

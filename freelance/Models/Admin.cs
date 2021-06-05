@@ -30,6 +30,7 @@ namespace freelance.Models
         public string Date { set; get; }
         public string State { set; get; }
         public string Budget { set; get; }
+        public string ClientEmail { set; get; }
 
     }
 }

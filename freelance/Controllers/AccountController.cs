@@ -87,7 +87,7 @@ namespace w.Controllers
                     {
                         return RedirectToLocal("~/Admin/?email="+user.Email);//get the email of the user
                     }else if (roles.ElementAt(0).ToString().Equals("Client")) {
-                        return RedirectToLocal("~/Client/Profile?email=" + user.Email);
+                        return RedirectToLocal("~/Client/MyPosts?email=" + user.Email);
                     }else if (roles.ElementAt(0).ToString().Equals("Freelancer"))
                     {
                         return RedirectToLocal("~/Freelancer/Index?email=" + user.Email);

@@ -374,6 +374,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AdminContext.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
@@ -435,6 +436,7 @@
     <Content Include="Views\Admin\EditMember.cshtml" />
     <Content Include="Views\Admin\EditClientPost.cshtml" />
     <Content Include="Views\Account\AdminEditProfile.cshtml" />
+    <Content Include="Views\Client\MyPosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

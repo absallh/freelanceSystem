@@ -100,7 +100,8 @@ namespace freelance.Controllers
                     PostText = Convert.ToString(dr["PostText"]),
                     Date = Convert.ToString(dr["Date"]),
                     State = Convert.ToString(dr["Accept"]),
-                    Budget = Convert.ToString(dr["JopBudget"])
+                    Budget = Convert.ToString(dr["JopBudget"]),
+                    ClientEmail = Convert.ToString(dr["ClientEmail"])
                 });
             }
             sqlconn.Close();
