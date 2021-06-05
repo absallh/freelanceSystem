@@ -21,9 +21,19 @@ namespace Client.Controllers
             return View();
         }
 
-        public ActionResult CreateNewPost()
+        public ActionResult CreateNewPost(string id, string Description, string Price)
         {
-           
+            if (Price != null)
+            {//string Jop = Convert.ToString(JopBudget);
+                mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlConnection sqlconn = new SqlConnection(mainconn);
+                sqlconn.Open();
+                SqlCommand cmd = sqlconn.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "insert into Posts Values('4','Ahmed','" + Description + "','1599','Wait','" + Price + "')";
+                cmd.ExecuteNonQuery();
+                sqlconn.Close();
+            }
             return View();
         }
 
@@ -33,20 +43,6 @@ namespace Client.Controllers
         }
         public ActionResult ReceivedProposals()
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CreatePost(String id, int JopBudget, string JopDescription)
-        {
-            string Jop = Convert.ToString(JopBudget);
-            mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(mainconn);
-            sqlconn.Open();
-            SqlCommand cmd = sqlconn.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into Posts  Values('2','Ahmed','" + JopDescription + "','15.9.9','" + Jop + "')";
-            cmd.ExecuteNonQuery();
-            sqlconn.Close();
             return View();
         }
 

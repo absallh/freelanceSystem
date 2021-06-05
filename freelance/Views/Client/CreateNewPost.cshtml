@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateNewPost";
     Layout = "~/Views/Shared/_FactoryLayout.cshtml";
 }
-@using (Html.BeginForm("CreatePost", "Client", FormMethod.Post, new { id ="EditPost", @class = "displaynone" }))
+@using (Html.BeginForm("CreateNewPost", "Client", FormMethod.Post, new { id = "EditPost", @class = "displaynone" }))
 {
     <input type="hidden" id="actionType" name="custId" />
 }
@@ -18,12 +18,12 @@
     <div class="createPost" id="app">
         <div class="add-product" :class="{'open': formOpen}">
             <div class="button-copy" v-show="!formOpen" @@click="formOpen = true">Add Product</div>
-            <form class="createPostForm">
-
+            <form class="createPostForm" method="post">
+                <input type="hidden" id="actionType" name="custId" />
                 <div class="radioform">
 
                     <div class="inputGroup">
-                        <input id="radio1" name="radio" type="radio" value="Fixed" onclick="submitEditPosts('5')" />
+                        <input id="radio1" name="radio" type="radio" value="Fixed" />
                         <label for="radio1">Fixed</label>
                     </div>
                     <div class="inputGroup">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form--field">
                     <label>Jop Description</label>
-                    <textarea class="form--element textarea" v-model="productData.description" placeholder="Description"></textarea>
+                    <textarea class="form--element textarea" v-model="productData.description" placeholder="Description" name="Description"></textarea>
                 </div>
 
                 <button type="submit" class="submit-button">Add Product</button>

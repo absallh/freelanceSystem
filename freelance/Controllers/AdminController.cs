@@ -10,7 +10,7 @@ using System.Data;
 
 namespace freelance.Controllers
 {
-    [Authorize (Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         DataSet ds;
@@ -20,19 +20,19 @@ namespace freelance.Controllers
         {
             SqlConnection sqlconn = new SqlConnection(mainconn);
             string Query = "select Email,PhoneNumber,UserName,UserType, Id from AspNetUsers ";
-            SqlCommand sqlcomm = new SqlCommand(Query,sqlconn);
+            SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
             ds = new DataSet();
             sda.Fill(ds);
             List<Admin> admins = new List<Admin>();
-            foreach(DataRow dr in ds.Tables[0].Rows)
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 admins.Add(new Admin
                 {
-                    Email    = Convert.ToString(dr["Email"]),
-                    Phone    = Convert.ToString(dr["PhoneNumber"]),
-                    Name     = Convert.ToString(dr["UserName"]),
+                    Email = Convert.ToString(dr["Email"]),
+                    Phone = Convert.ToString(dr["PhoneNumber"]),
+                    Name = Convert.ToString(dr["UserName"]),
                     UserType = Convert.ToString(dr["UserType"]),
                     Id = Convert.ToString(dr["Id"])
                 });
@@ -41,14 +41,14 @@ namespace freelance.Controllers
             return View(admins);
         }
 
-        public ActionResult EditProfile(string fname, string lname, string email,string phone, string password)
+        public ActionResult EditProfile(string fname, string lname, string email, string phone, string password)
         {
             mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
             sqlconn.Open();
             SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update AspNetUsers set firstName='"+ fname + "',lastName= '"+ lname + "',PhoneNumber = '"+ phone + "'  Where Email = '" + email + "'";
+            cmd.CommandText = "update AspNetUsers set firstName='" + fname + "',lastName= '" + lname + "',PhoneNumber = '" + phone + "'  Where Email = '" + email + "'";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
             return View();
@@ -69,12 +69,12 @@ namespace freelance.Controllers
             {
                 Posts.Add(new Admin
                 {
-                    Id       = Convert.ToString(dr["Id"]),
-                    Name     = Convert.ToString(dr["ClientName"]),
+                    Id = Convert.ToString(dr["Id"]),
+                    Name = Convert.ToString(dr["ClientName"]),
                     PostText = Convert.ToString(dr["PostText"]),
-                    Date     = Convert.ToString(dr["Date"]),
-                    State    = Convert.ToString(dr["Accept"]),
-                    Budget   = Convert.ToString(dr["JopBudget"]) 
+                    Date = Convert.ToString(dr["Date"]),
+                    State = Convert.ToString(dr["Accept"]),
+                    Budget = Convert.ToString(dr["JopBudget"])
                 });
             }
             sqlconn.Close();
@@ -86,9 +86,9 @@ namespace freelance.Controllers
             mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
             sqlconn.Open();
-            SqlCommand cmd  = sqlconn.CreateCommand();
+            SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from AspNetUsers Where Id ='"+id+"'";
+            cmd.CommandText = "delete from AspNetUsers Where Id ='" + id + "'";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
             return RedirectToAction("Index", "Admin");
