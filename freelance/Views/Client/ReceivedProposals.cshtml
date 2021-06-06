@@ -3,26 +3,20 @@
     ViewBag.Title = "ReceivedProposals";
     Layout = "~/Views/Shared/_FactoryLayout.cshtml";
 }
-<form method="post" class="displaynone" id="Delete"><input type="hidden" id="deleteID" name="id" /></form>
-<form method="post" class="displaynone" id="actionType"><input type="hidden" id="custId" name="id" /></form>
-@*@using (Html.BeginForm("DeleteProposal", "Client", FormMethod.Post, new { id = "Delete", @class = "displaynone" }))
-{
-    <input type="hidden" id="deleteID" name="id" />
-}*@
+
 <div class="row">
-    @*@using (Html.BeginForm("ReceivedProposals", "Client", FormMethod.Post, new { id = "actionType", @class = "col-lg-12" }))
-    {*@<div class="col-lg-12">
+    @using (Html.BeginForm("ReceivedProposals", "Client", FormMethod.Post, new { id = "actionType", choice = "actionType", @class = "col-lg-12" }))
+    {
         <script>
-            function DeleteProposal(id) {
-                document.getElementById('deleteID').value = id;
-                document.getElementById('Delete').submit();
-            }
-            function AcceptProposal(id) {
+            function AcceptProposal(id,Choice) {
                 document.getElementById('custId').value = id;
+                document.getElementById('choice').value = Choice;
                 document.getElementById('actionType').submit();
             }
+
         </script>
         <input type="hidden" id="custId" name="id">
+        <input type="hidden" id="choice" name="choice">
         <div class="card">
             <div class="card-header">
                 <h4>Striped table with hover effect</h4>
@@ -48,8 +42,8 @@
                                     <td>@Html.DisplayFor(Model => item.Time)</td>
                                     <td>@Html.DisplayFor(Model => item.State)</td>
                                     <td>
-                                        <button type="submit" class="btn btn-secondary" onclick="DeleteProposal( '@Html.DisplayFor(Model => item.RowId)' )">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" onclick="AcceptProposal( '@Html.DisplayFor(Model => item.PostText)' )">Accept</button>
+                                        <button type="submit" class="btn btn-secondary" onclick="AcceptProposal( '@Html.DisplayFor(Model => item.RowId)' ,'False' )">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" onclick="AcceptProposal( '@Html.DisplayFor(Model => item.RowId)','true' )">Accept</button>
                                     </td>
                                 </tr>
                             }
@@ -58,5 +52,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    }
 </div>

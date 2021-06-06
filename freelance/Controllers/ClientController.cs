@@ -105,12 +105,12 @@ namespace Client.Controllers
             sqlconn.Close();
             return View(posts);
         }
-        public ActionResult ReceivedProposals( )
+        public ActionResult ReceivedProposals()
         {
             var userID = User.Identity.GetUserId();
             var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            string Query = "select * from Proposal where ClientEmail ='" + user.Email + "' AND State ='wait'" ;
+            string Query = "select * from Proposal where ClientEmail ='" + user.Email + "' AND State ='wait'";
             SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
             sqlconn.Open();
@@ -128,39 +128,38 @@ namespace Client.Controllers
                     State = Convert.ToString(dr["State"]),
                     FreeLancerId = Convert.ToString(dr["FreeLancerId"]),
                     ClientEmail = Convert.ToString(dr["ClientEmail"])
-                    
+
                 });
             }
-                return View(Proposal);
+            return View(Proposal);
         }
 
         [HttpPost]
-        public ActionResult ReceivedProposals(string id)
+        public ActionResult ReceivedProposals(string id, string choice)
         {
             mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            sqlconn.Open();
-            SqlCommand cmd = sqlconn.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update Proposal set State='accept' Where Id ='" + id + "'";
-            cmd.ExecuteNonQuery();
-            sqlconn.Close();
-
+            SqlCommand cmd;
+            if (choice.Equals("False"))
+            {
+                sqlconn.Open();
+                cmd = sqlconn.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "update Proposal set State='accept' Where Id ='" + id + "'";
+                cmd.ExecuteNonQuery();
+                sqlconn.Close();
+            }
+            else
+            {
+                sqlconn.Open();
+                cmd = sqlconn.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "delete from Proposal Where Id ='" + id + "'";
+                cmd.ExecuteNonQuery();
+                sqlconn.Close();
+            }
             return RedirectToAction("Myposts", "Client");
         }
-        [HttpPost]
-        public ActionResult DeleteProposal(string id)
-        {
-            mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(mainconn);
-            sqlconn.Open();
-            SqlCommand cmd = sqlconn.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from Proposal Where PostText ='" + id + "'";
-            cmd.ExecuteNonQuery();
-            sqlconn.Close();
 
-            return RedirectToAction("Myposts", "Client");
-        }
     }
 }
