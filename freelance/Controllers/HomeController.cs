@@ -56,7 +56,7 @@ namespace w.Controllers
         {
             string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            string Query = "select * from Posts where Accept='accept'";
+            string Query = "select * from Posts where Accept='accept' AND Id NOT IN (SELECT FreeLancerId from Proposal)";
             SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);

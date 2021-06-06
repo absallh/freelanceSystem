@@ -153,7 +153,7 @@ namespace freelance.Controllers
             sqlconn.Open();
             SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from AspNetUsers Where Id ='" + id + "'";
+            cmd.CommandText = "delete from AspNetUsers Where PostText ='" + id + "'";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
             return RedirectToAction("Index", "Admin");

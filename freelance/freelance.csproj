@@ -441,6 +441,7 @@
     <Content Include="Views\Client\MyPosts.cshtml" />
     <Content Include="Views\Admin\AddMember.cshtml" />
     <Content Include="Views\Client\ReceivedProposals.cshtml" />
+    <Content Include="Views\Freelancer\SavedPosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
