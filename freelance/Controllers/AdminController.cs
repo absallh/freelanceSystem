@@ -127,7 +127,7 @@ namespace freelance.Controllers
             sqlconn.Open();
             SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from Posts Where Id =" + id + "";
+            cmd.CommandText = "delete from Posts Where PostText ='" + id + "'";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
 
@@ -141,7 +141,7 @@ namespace freelance.Controllers
             sqlconn.Open();
             SqlCommand cmd = sqlconn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update Posts set Accept='accept' Where Id =" + id + "";
+            cmd.CommandText = "update Posts set Accept='accept' Where PostText ='" + id + "'";
             cmd.ExecuteNonQuery();
             sqlconn.Close();
             return RedirectToAction("AllPosts", "Admin");
@@ -154,7 +154,30 @@ namespace freelance.Controllers
         }
         public ActionResult EditClientPost(string id)
         {
-            return View();
+            string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            string Query = "select * from Posts where PostText ='"+id+"'";
+            SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
+            sqlconn.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+            ds = new DataSet();
+            sda.Fill(ds);
+            List<Admin> Posts = new List<Admin>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Posts.Add(new Admin
+                {
+                    Id = Convert.ToString(dr["Id"]),
+                    Name = Convert.ToString(dr["ClientName"]),
+                    PostText = Convert.ToString(dr["PostText"]),
+                    Date = Convert.ToString(dr["Date"]),
+                    State = Convert.ToString(dr["Accept"]),
+                    Budget = Convert.ToString(dr["JopBudget"]),
+                    ClientEmail = Convert.ToString(dr["ClientEmail"])
+                });
+            }
+            sqlconn.Close();
+            return View(Posts);
         }
         public ActionResult EditMember(string id)
         {

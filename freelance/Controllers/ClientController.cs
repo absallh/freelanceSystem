@@ -52,8 +52,10 @@ namespace Client.Controllers
             return View(Model);
         }
 
-        public ActionResult CreateNewPost(string id, string Description, string Price)
+        public ActionResult CreateNewPost( string Description, string Price)
         {
+            var userID = User.Identity.GetUserId();
+            var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
             if (Price != null)
             {//string Jop = Convert.ToString(JopBudget);
                 mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -61,7 +63,7 @@ namespace Client.Controllers
                 sqlconn.Open();
                 SqlCommand cmd = sqlconn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Posts Values('4','Ahmed','" + Description + "','1599','Wait','" + Price + "')";
+                cmd.CommandText = "insert into Posts Values(' ','"+user.firstName+"','" + Description + "','19.2.2','Wait','" + Price +"','"+user.Email+"' )";
                 cmd.ExecuteNonQuery();
                 sqlconn.Close();
             }
@@ -70,8 +72,10 @@ namespace Client.Controllers
 
         public ActionResult Myposts(string Email)
         {
+            var userID = User.Identity.GetUserId();
+            var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            string Query = "Select ClientName,PostText from Posts where ClientEmail='" + Email + "'";
+            string Query = "Select ClientName,PostText from Posts where ClientEmail='" + user.Email + "'";
             SqlCommand sqlcomm = new SqlCommand(Query, sqlconn);
             sqlconn.Open();
             SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);

@@ -6,7 +6,7 @@
 }
 @using (Html.BeginForm("CreateNewPost", "Client", FormMethod.Post, new { id = "EditPost", @class = "displaynone" }))
 {
-    <input type="hidden" id="actionType" name="custId" />
+    <input type="hidden" id="actionType" name="custId" value="6" />
 }
 <script>
     function submitEditPosts(id) {
@@ -42,7 +42,7 @@
                     <textarea class="form--element textarea" v-model="productData.description" placeholder="Description" name="Description"></textarea>
                 </div>
 
-                <button type="submit" class="submit-button">Add Product</button>
+                <button type="submit" class="submit-button" onclick="">Add Product</button>
                 <div class="cancel"><span @@click="cancel()">Cancel</span></div>
             </form>
         </div>
