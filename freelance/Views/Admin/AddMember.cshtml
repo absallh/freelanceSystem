@@ -1,0 +1,91 @@
+﻿@model w.Models.RegisterViewModel
+@{
+    ViewBag.Title = "AddMember";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<script>
+    function Button(check) {
+        document.getElementById('Checkvalue').value = check;
+        document.getElementById('Checkvalue').submit();
+    }
+</script>
+@using (Html.BeginForm("AddMember", "Admin", FormMethod.Post, new { @class = "container mt-5" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row tm-content-row">
+        <div class="tm-block-col tm-col-avatar">
+            <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+                <h2 class="tm-block-title">Change Avatar</h2>
+                <div class="tm-avatar-container">
+                    <img src="~/img/avatar.png"
+                         alt="Avatar"
+                         class="tm-avatar img-fluid mb-4" />
+                    <a href="#" class="tm-avatar-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    </a>
+                </div>
+                <button class="btn btn-primary btn-block text-uppercase">
+                    Upload New Photo
+                </button>
+            </div>
+        </div>
+
+        <div class="tm-block-col tm-col-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+                <h2 class="tm-block-title">ADD MEMBER</h2>
+                <div class="tm-signup-form row">
+                    <input type="hidden" id="Checkvalue" name="Checkvalue" value="false">
+
+                    <div class="form-group col-lg-6">
+                        <label for="fname">First Name</label>
+                        @Html.TextBoxFor(model => model.firstName, new { @class = "form-control validate" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="lname">Last Name</label>
+                        @Html.TextBoxFor(model => model.lastName, new { @class = "form-control validate" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="email">Account Email</label>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control validate" })
+                        @*<input type="text" value="" id="emailInput" class="" style="color: black" disabled />*@
+                        <script>
+                            document.querySelector('#emailInput').value = document.querySelector("#EmailDisplay").value;
+                        </script>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="phone">Phone</label>
+                        @Html.TextBoxFor(model => model.phone, new { @class = "form-control validate" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="password">Password</label>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control validate" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="password2">Re-enter Password</label>
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control validate" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <div style="display:flex; width:100%;">
+                            <label class="radioContainer" style="flex: 1;">
+                                Freelancer
+                                @Html.RadioButtonFor(m => m.UserType, "Freelancer", new { id = "freelancerRadio" })
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radioContainer" style="flex: 1;">
+                                Client
+                                @Html.RadioButtonFor(m => m.UserType, "Client", new { id = "clientRadio" })
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" onclick="Button('true')"
+                                class="btn btn-primary btn-block text-uppercase">
+                            UPDATE YOUR PROFILE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

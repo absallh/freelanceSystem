@@ -14,7 +14,9 @@
         document.getElementById('Checkvalue').submit();
     }
 </script>
-<div class="container mt-5">
+@using (Html.BeginForm("EditProfile", "Admin", FormMethod.Post, new { @class = "container mt-5" }))
+{
+    @Html.AntiForgeryToken()
     <div class="row tm-content-row">
         <div class="tm-block-col tm-col-avatar">
             <div class="tm-bg-primary-dark tm-block tm-block-avatar">
@@ -36,9 +38,7 @@
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
                 <h2 class="tm-block-title">Account Settings</h2>
-                @using (Html.BeginForm("EditProfile", "Admin", FormMethod.Post, new { @class = "tm-signup-form row" }))
-                {
-                    @Html.AntiForgeryToken()
+                <div class="tm-signup-form row">
                     <input type="hidden" id="Checkvalue" name="Checkvalue" value="false">
 
                     <div class="form-group col-lg-6">
@@ -75,8 +75,8 @@
                             UPDATE YOUR PROFILE
                         </button>
                     </div>
-                }
+                </div>
             </div>
         </div>
     </div>
-</div>
+}

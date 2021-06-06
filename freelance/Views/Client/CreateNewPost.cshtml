@@ -1,5 +1,4 @@
-﻿
-@model freelance.Models.Post
+﻿@model freelance.Models.Post
 @{
     ViewBag.Title = "CreateNewPost";
     Layout = "~/Views/Shared/_FactoryLayout.cshtml";
@@ -18,33 +17,37 @@
     <div class="createPost" id="app">
         <div class="add-product" :class="{'open': formOpen}">
             <div class="button-copy" v-show="!formOpen" @@click="formOpen = true">Add Product</div>
-            <form class="createPostForm" method="post">
-                <input type="hidden" id="actionType" name="custId" />
+            @using (Html.BeginForm("CreateNewPost", "Client", FormMethod.Post, new { @class = "createPostForm" }))
+            {
+                @Html.AntiForgeryToken()
                 <div class="radioform">
 
                     <div class="inputGroup">
-                        <input id="radio1" name="radio" type="radio" value="Fixed" />
+                        @Html.RadioButtonFor(model=>model.jobType, "Fixed", new { id = "radio1" })
                         <label for="radio1">Fixed</label>
                     </div>
                     <div class="inputGroup">
-                        <input id="radio2" name="radio" type="radio" value="Houly" />
-                        <label for="radio2">Houly</label>
+                        @Html.RadioButtonFor(model => model.jobType, "Hourly", new { id = "radio2" })
+                        <label for="radio2">Hourly</label>
                     </div>
                 </div>
 
                 <div class="form--field">
                     <label>Jop Budget</label>
                     <span class="form--price">$</span>
-                    <input type="text" class="form--element" name="price" v-model="productData.price" placeholder="Price" required="" min="0" max="500" pattern="\d+(\.\d{2})?">
+                    @Html.TextBoxFor(model => model.budget, new { @class="form--element", type = "number", step = "0.01", 
+                                    required = "requied", placeholder = "Price" })
+                    @*<input type="text" class="form--element" name="price" v-model="productData.price" placeholder="Price" required="" min="0" max="500" pattern="\d+(\.\d{2})?">*@
                 </div>
                 <div class="form--field">
                     <label>Jop Description</label>
-                    <textarea class="form--element textarea" v-model="productData.description" placeholder="Description" name="Description"></textarea>
+                    @Html.TextAreaFor(model => model.JobDescription, new { @class = "form--element textarea", required = "requied" })
+                    @*<textarea class="form--element textarea" v-model="productData.description" placeholder="Description" name="Description"></textarea>*@
                 </div>
 
                 <button type="submit" class="submit-button" onclick="">Add Product</button>
                 <div class="cancel"><span @@click="cancel()">Cancel</span></div>
-            </form>
+            }
         </div>
     </div>
 </div>

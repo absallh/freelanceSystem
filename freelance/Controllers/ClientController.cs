@@ -19,6 +19,9 @@ namespace Client.Controllers
         DataSet ds;
         string mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         private ApplicationDbContext db;
+
+        public object CorrelationIdGenerator { get; private set; }
+
         public ClientController()
         {
             db = new ApplicationDbContext();
@@ -52,22 +55,31 @@ namespace Client.Controllers
             return View(Model);
         }
 
-        public ActionResult CreateNewPost( string Description, string Price)
+        public ActionResult CreateNewPost()
+        {
+            Post model = new Post();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewPost(Post model)
         {
             var userID = User.Identity.GetUserId();
             var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
-            if (Price != null)
+            if (model.budget != null)
             {//string Jop = Convert.ToString(JopBudget);
                 mainconn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 SqlConnection sqlconn = new SqlConnection(mainconn);
                 sqlconn.Open();
                 SqlCommand cmd = sqlconn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Posts Values(' ','"+user.firstName+"','" + Description + "','19.2.2','Wait','" + Price +"','"+user.Email+"' )";
+                model.id = Guid.NewGuid().ToString().GetHashCode().ToString("x");
+                cmd.CommandText = "insert into Posts Values('" + model.id + "','" + user.firstName + "','" + model.JobDescription + "','" +
+                     DateTime.Now.ToString("MM.dd.yyyy") + "','Wait','" + model.budget + "','" + user.Email + "' )";
                 cmd.ExecuteNonQuery();
                 sqlconn.Close();
             }
-            return View();
+            return RedirectToAction("Myposts", "Client", user.Email);
         }
 
         public ActionResult Myposts(string Email)
