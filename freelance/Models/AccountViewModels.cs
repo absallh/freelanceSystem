@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using freelance.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace w.Models
@@ -101,6 +102,7 @@ namespace w.Models
     {
         public LoginViewModel login { get; set; }
         public RegisterViewModel register { get; set; }
+        public List<Post> post { get; set; }
     }
 
     public class ResetPasswordViewModel

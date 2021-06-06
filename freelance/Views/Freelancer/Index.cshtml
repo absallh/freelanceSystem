@@ -1,4 +1,4 @@
-﻿
+﻿@model w.Models.LoginRegisterViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_WallLayout.cshtml";
@@ -11,8 +11,22 @@
     </div>
     <span class="close" onclick="searchToggle(this, event);"></span>
 </div>
-
-<div class="card_container">
+@foreach (var item in Model.post)
+{
+    <div class="card_container">
+        <div class="card">
+            <div class="description">
+                <h2>@Html.DisplayFor(model => item.ClientName)</h2>
+                <h4>@Html.DisplayFor(model => item.postTime)</h4>
+                <h1>$@Html.DisplayFor(model => item.budget)</h1>
+                <p>@Html.DisplayFor(model => item.JobDescription)</p>
+                <button>Add proposal</button>
+                <button>Save Post</button>
+            </div>
+        </div>
+    </div>
+ }
+@*<div class="card_container">
     <div class="card">
         <div class="description">
             <h2>Abdallh mo</h2>
@@ -46,4 +60,4 @@
             <button>Wishlist</button>
         </div>
     </div>
-</div>
+</div>*@

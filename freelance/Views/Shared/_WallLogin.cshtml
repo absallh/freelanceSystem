@@ -9,21 +9,21 @@
         <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bars" aria-hidden="true"></i></a>
         <ul aria-labelledby="notifications" class="dropdown-menu">
             <li>
-                <a rel="nofollow" href="#" class="dropdown-item">
+                <a rel="nofollow" href="~/Freelancer/Index" class="dropdown-item">
                     <div class="notification d-flex justify-content-between">
                         <div class="notification-content"><i class="fa fa-home" aria-hidden="true"></i>Home</div>
                     </div>
                 </a>
             </li>
             <li>
-                <a rel="nofollow" href="#" class="dropdown-item">
+                <a rel="nofollow" href="~/Freelancer/EditProfile" class="dropdown-item">
                     <div class="notification d-flex justify-content-between">
                         <div class="notification-content"><i class="fa fa-user" aria-hidden="true"></i>Edit Profile</div>
                     </div>
                 </a>
             </li>
             <li>
-                <a rel="nofollow" href="#" class="dropdown-item">
+                <a rel="nofollow" href="~/Freelancer/SavedPosts" class="dropdown-item">
                     <div class="notification d-flex justify-content-between">
                         <div class="notification-content"><i class="fa fa-bookmark" aria-hidden="true"></i>Saved Posts</div>
                     </div>
@@ -89,11 +89,11 @@ else
                             <div class="pandahand rgt"></div>
                             <h1>Signup</h1>
                             <div id="Names">
-                                <div class="form-group">
+                                <div class="pandaform-group">
                                     @Html.TextBoxFor(m => m.register.firstName, new { @class = "form-control", id = "f_name", required = "required" })
                                     <label class="form-label">First Name</label>
                                 </div>
-                                <div class="form-group">
+                                <div class="pandaform-group">
                                     @Html.TextBoxFor(m => m.register.lastName, new { @class = "form-control", id = "l_name", required = "required" })
                                     <label class="form-label">Last Name</label>
                                     <p class="alert">Please type your first and last name..!!</p>
@@ -101,11 +101,11 @@ else
                                 </div>
                             </div>
                             <div id="Emails" style="display: none;">
-                                <div class="form-group">
+                                <div class="pandaform-group">
                                     @Html.TextBoxFor(m => m.register.Email, new { @class = "form-control", id = "userEmail", required = "required" })
                                     <label class="form-label">Email</label>
                                 </div>
-                                <div class="form-group">
+                                <div class="pandaform-group">
                                     <div style="display:flex">
                                         <label class="radioContainer" style="flex: 1;">
                                             Freelancer
@@ -123,11 +123,11 @@ else
                                 </div>
                             </div>
                             <div id="Password" style="display: none">
-                                <div class="form-group">
+                                <div class="pandaform-group">
                                     @Html.PasswordFor(m => m.register.Password, new { @class = "form-control signupPassword", id = "signup_password", required = "required" })
                                     <label class="form-label">Password    </label>
                                 </div>
-                                <div class="form-group">
+                                <div class="pandaform-group">
                                     @Html.PasswordFor(m => m.register.ConfirmPassword, new { @class = "form-control signupPassword", id = "ComfirmPassword", required = "required" })
                                     <label class="form-label">Comfirm Password</label>
                                     <p class="alert">Enter your Password or password dosen't matched..!!</p>

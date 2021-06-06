@@ -57,8 +57,26 @@ namespace w.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public async Task<ActionResult> Login(string returnUrl)
         {
+            if (Request.IsAuthenticated)
+            {
+                var userID = User.Identity.GetUserId();
+                var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
+                IList<string> roles = await SignInManager.UserManager.GetRolesAsync(user.Id);
+                if (roles.ElementAt(0).ToString().Equals("Admin"))
+                {
+                    return RedirectToLocal("~/Admin/");//get the email of the user
+                }
+                else if (roles.ElementAt(0).ToString().Equals("Client"))
+                {
+                    return RedirectToLocal("~/Client/MyPosts");
+                }
+                else if (roles.ElementAt(0).ToString().Equals("Freelancer"))
+                {
+                    return RedirectToLocal("~/Freelancer/Index");
+                }
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -70,6 +88,24 @@ namespace w.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginRegisterViewModel model, string returnUrl)
         {
+            if (Request.IsAuthenticated)
+            {
+                var userID = User.Identity.GetUserId();
+                var user = db.Users.Where(a => a.Id == userID).SingleOrDefault();
+                IList<string> roles = await SignInManager.UserManager.GetRolesAsync(user.Id);
+                if (roles.ElementAt(0).ToString().Equals("Admin"))
+                {
+                    return RedirectToLocal("~/Admin/");//get the email of the user
+                }
+                else if (roles.ElementAt(0).ToString().Equals("Client"))
+                {
+                    return RedirectToLocal("~/Client/MyPosts");
+                }
+                else if (roles.ElementAt(0).ToString().Equals("Freelancer"))
+                {
+                    return RedirectToLocal("~/Freelancer/Index?email=" + user.Email);
+                }
+            }
             if (!ModelState.IsValid)
             {
                 return View(model.login);
@@ -85,12 +121,12 @@ namespace w.Controllers
                     IList<string> roles = await SignInManager.UserManager.GetRolesAsync(user.Id);
                     if (roles.ElementAt(0).ToString().Equals("Admin"))
                     {
-                        return RedirectToLocal("~/Admin/?email="+user.Email);//get the email of the user
+                        return RedirectToLocal("~/Admin/");//get the email of the user
                     }else if (roles.ElementAt(0).ToString().Equals("Client")) {
-                        return RedirectToLocal("~/Client/MyPosts?email=" + user.Email);
+                        return RedirectToLocal("~/Client/MyPosts");
                     }else if (roles.ElementAt(0).ToString().Equals("Freelancer"))
                     {
-                        return RedirectToLocal("~/Freelancer/Index?email=" + user.Email);
+                        return RedirectToLocal("~/Freelancer/Index");
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
