@@ -83,4 +83,14 @@ namespace w.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+    public class ProposalViewModel
+    {
+        public string RowId { get; set; }
+        public string PostText { get; set; }
+        public string FreeLancerName { get; set; }
+        public string Time { get; set; }
+        public string State { get; set; }
+        public string FreeLancerId { get; set; }
+        public string ClientEmail { get; set; }
+    }
 }

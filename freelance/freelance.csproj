@@ -440,6 +440,7 @@
     <Content Include="Views\Account\AdminEditProfile.cshtml" />
     <Content Include="Views\Client\MyPosts.cshtml" />
     <Content Include="Views\Admin\AddMember.cshtml" />
+    <Content Include="Views\Client\ReceivedProposals.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,11 +1,26 @@
-﻿
+﻿@model IEnumerable<w.Models.ProposalViewModel>
 @{
     ViewBag.Title = "ReceivedProposals";
     Layout = "~/Views/Shared/_FactoryLayout.cshtml";
 }
-
+@using (Html.BeginForm("DeleteProposal", "Client", FormMethod.Post, new { id = "Delete", @class = "displaynone" }))
+{
+    <input type="hidden" id="actionType" name="id" />
+}
 <div class="row">
-    <div class="col-lg-12">
+    @using (Html.BeginForm("ReceivedProposals", "Client", FormMethod.Post, new { id = "actionType", @class = "col-lg-12" }))
+    {
+        <script>
+            function DeleteProposal(id) {
+                document.getElementById('custId').value = id;
+                document.getElementById('Delete').submit();
+            }
+            function AcceptProposal(id) {
+                document.getElementById('custId').value = id;
+                document.getElementById('actionType').submit();
+            }
+        </script>
+        <input type="hidden" id="custId" name="id">
         <div class="card">
             <div class="card-header">
                 <h4>Striped table with hover effect</h4>
@@ -18,45 +33,28 @@
                                 <th>Post txt</th>
                                 <th>freelancer name</th>
                                 <th>time</th>
-                                <th>Proposal</th>
+                                <th>State</th>
                                 <td>Actions</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>mdo</td>
-                                <td>
-                                    <button type="submit" class="btn btn-secondary">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>fat</td>
-                                <td>
-                                    <button type="submit" class="btn btn-secondary">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>i</td>
-                                <td>
-                                    <button type="submit" class="btn btn-secondary">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </td>
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@Html.DisplayFor(Model => item.PostText)</th>
+                                    <td>@Html.DisplayFor(Model => item.FreeLancerName)</td>
+                                    <td>@Html.DisplayFor(Model => item.Time)</td>
+                                    <td>@Html.DisplayFor(Model => item.State)</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-secondary" onclick="DeleteProposal( '@Html.DisplayFor(Model => item.RowId)' )">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" onclick="AcceptProposal( '@Html.DisplayFor(Model => item.PostText)' )">Accept</button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    </div>
+    }
 </div>
