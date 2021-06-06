@@ -147,7 +147,7 @@ namespace freelance.Controllers
             return RedirectToAction("AllPosts", "Admin");
         }
         [HttpPost]
-        public ActionResult EditPost(String id)
+        public ActionResult EditPost(string id)
         {
 
             return RedirectToAction("AllPosts", "Admin");
