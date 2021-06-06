@@ -154,6 +154,7 @@
     <Content Include="Content\css\popup.css" />
     <Content Include="Content\css\PopupLogin.css" />
     <Content Include="Content\css\PostsCard.css" />
+    <Content Include="Content\css\signupPanda.css" />
     <Content Include="Content\searchInput.css" />
     <Content Include="Scripts\js\freelancerSearch.js" />
     <Content Include="Scripts\js\popup.js" />
@@ -337,6 +338,7 @@
     <Content Include="Scripts\js\front.js" />
     <Content Include="Scripts\js\grasp_mobile_progress_circle-1.0.0.min.js" />
     <Content Include="Scripts\js\main.js" />
+    <Content Include="Scripts\js\signupPanda.js" />
     <Content Include="Scripts\LoginPopup.js" />
     <Content Include="Scripts\searchInput.js" />
     <Content Include="Web.config" />

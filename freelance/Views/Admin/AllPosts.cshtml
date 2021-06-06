@@ -60,7 +60,7 @@
                                     <td style="text-align:center">@Html.DisplayFor(Model => item.State)</td>
                                     <td style="text-align:center">
                                         <a class="tm-product-delete-link" onclick="submitAcceptPosts( '@Html.DisplayFor(Model => item.Id)' )"><span class="fas fa-check"></span></a>
-                                        <a class="tm-product-delete-link" href ="/Admin/EditClientPost?id=@Html.DisplayFor(Model => item.Id)" ><span class="fas fa-times"></span></a>
+                                        <a class="tm-product-delete-link" href ="/Admin/EditClientPost?id=@Html.DisplayFor(Model => item.Id)" ><i class="fas fa-edit"></i></a>
                                     </td>
                                     <td style="text-align:center">
                                         <a class="tm-product-delete-link" onclick="submitDeletePosts( '@Html.DisplayFor(Model => item.Id)' )"><span class="far fa-trash-alt tm-product-delete-icon"></span></a>

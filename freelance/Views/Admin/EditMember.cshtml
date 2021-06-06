@@ -1,9 +1,16 @@
-﻿
+﻿@model w.Models.RegisterViewModel
 @{
-    ViewBag.Title = "EditMember";
+    ViewBag.Title = "EditProfile";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
 }
 
+<script>
+    function Button(check) {
+        document.getElementById('Checkvalue').value = check;
+        document.getElementById('Checkvalue').submit();
+    }
+</script>
 <div class="container mt-5">
     <div class="row tm-content-row">
         <div class="tm-block-col tm-col-avatar">
@@ -22,53 +29,49 @@
                 </button>
             </div>
         </div>
+
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
-                <h2 class="tm-block-title">Account Settings</h2>
-                <form action="EditProfile" class="tm-signup-form row" method="post">
+                <h2 class="tm-block-title">EDIT MEMBER</h2>
+                @using (Html.BeginForm("EditProfile", "Admin", FormMethod.Post, new { @class = "tm-signup-form row" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="Checkvalue" name="Checkvalue" value="false">
                     <div class="form-group col-lg-6">
                         <label for="fname">First Name</label>
-                        <input name="fname"
-                               type="text"
-                               class="form-control validate" />
+                        @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control validate" } })
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="lname">Last Name</label>
-                        <input name="lname"
-                               type="text"
-                               class="form-control validate" />
+                        @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control validate" } })
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="email">Account Email</label>
-                        <input name="email"
-                               type="email"
-                               class="form-control validate" />
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { id = "EmailDisplay", style = "display: none;" } })
+                        <input type="text" value="" id="emailInput" class="form-control validate" style="color: black" disabled />
+                        <script>
+                            document.querySelector('#emailInput').value = document.querySelector("#EmailDisplay").value;
+                        </script>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="phone">Phone</label>
-                        <input name="phone"
-                               type="tel"
-                               class="form-control validate" />
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control validate" } })
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="password">Password</label>
-                        <input name="password"
-                               type="password"
-                               class="form-control validate" />
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control validate" } })
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="password2">Re-enter Password</label>
-                        <input name="password2"
-                               type="password"
-                               class="form-control validate" />
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control validate" } })
                     </div>
                     <div class="col-12">
-                        <button type="submit"
+                        <button type="submit" onclick="Button('true')"
                                 class="btn btn-primary btn-block text-uppercase">
-                            UPDATE YOUR PROFILE
+                            UPDATE MEMBEr
                         </button>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>

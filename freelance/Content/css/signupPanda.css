@@ -1,0 +1,470 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Dancing+Script|Roboto);
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+.signupPanda {
+    background: #cc3367;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.panda {
+    position: relative;
+    width: 200px;
+    margin: 50px auto;
+}
+
+.pandaface {
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    border-radius: 100%;
+    margin: 50px auto;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+    position: relative;
+}
+
+.pandaear, .pandaear:after {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #000;
+    z-index: 5;
+    border: 10px solid #fff;
+    left: -15px;
+    top: -15px;
+    border-radius: 100%;
+}
+
+    .pandaear:after {
+        content: '';
+        left: 125px;
+    }
+
+.eye-shade {
+    background: #000;
+    width: 50px;
+    height: 80px;
+    margin: 10px;
+    position: absolute;
+    top: 35px;
+    left: 25px;
+    transform: rotate(220deg);
+    border-radius: 25px/20px 30px 35px 40px;
+}
+
+    .eye-shade.rgt {
+        transform: rotate(140deg);
+        left: 105px;
+    }
+
+.eye-white {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background: #fff;
+    z-index: 500;
+    left: 40px;
+    top: 80px;
+    overflow: hidden;
+}
+
+    .eye-white.rgt {
+        right: 40px;
+        left: auto;
+    }
+
+.eye-ball {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    left: 20px;
+    top: 20px;
+    max-width: 10px;
+    max-height: 10px;
+    transition: 0.1s;
+}
+
+    .eye-ball:after {
+        content: '';
+        background: #000;
+        position: absolute;
+        border-radius: 100%;
+        right: 0;
+        bottom: 0px;
+        width: 20px;
+        height: 20px;
+    }
+
+.pandanose {
+    position: absolute;
+    height: 20px;
+    width: 35px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50px 20px/30px 15px;
+    transform: rotate(15deg);
+    background: #000;
+}
+
+.body {
+    background: #fff;
+    position: absolute;
+    top: 200px;
+    left: -20px;
+    border-radius: 100px 100px 100px 100px/126px 126px 96px 96px;
+    width: 250px;
+    height: 282px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pandahand, .pandahand:after, .pandahand:before {
+    width: 40px;
+    height: 30px;
+    border-radius: 50px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    background: #000;
+    margin: 5px;
+    position: absolute;
+    top: 70px;
+    left: -25px;
+}
+
+    .pandahand:after, .pandahand:before {
+        content: '';
+        left: -5px;
+        top: 11px;
+    }
+
+    .pandahand:before {
+        top: 26px;
+    }
+
+    .pandahand.rgt, .rgt.pandahand:after, .rgt.pandahand:before {
+        left: auto;
+        right: -25px;
+    }
+
+        .pandahand.rgt:after, .pandahand.rgt:before {
+            left: auto;
+            right: -5px;
+        }
+
+.foot {
+    top: 360px;
+    left: -80px;
+    position: absolute;
+    background: #000;
+    z-index: 1400;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 40px 40px 39px 40px/26px 26px 63px 63px;
+    width: 82px;
+    height: 120px;
+}
+
+    .foot:after {
+        content: '';
+        width: 55px;
+        height: 65px;
+        background: #222;
+        border-radius: 100%;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .foot .pandafinger, .foot .pandafinger:after, .foot .pandafinger:before {
+        position: absolute;
+        width: 25px;
+        height: 35px;
+        background: #222;
+        border-radius: 100%;
+        top: 10px;
+        right: 5px;
+    }
+
+        .foot .pandafinger:after, .foot .pandafinger:before {
+            content: '';
+            right: 30px;
+            width: 20px;
+            top: 0;
+        }
+
+        .foot .pandafinger:before {
+            right: 55px;
+            top: 5px;
+        }
+
+    .foot.rgt {
+        left: auto;
+        right: -80px;
+    }
+
+        .foot.rgt .pandafinger, .foot.rgt .pandafinger:after, .foot.rgt .pandafinger:before {
+            left: 5px;
+            right: auto;
+        }
+
+            .foot.rgt .pandafinger:after {
+                left: 30px;
+                right: auto;
+            }
+
+            .foot.rgt .pandafinger:before {
+                left: 55px;
+                right: auto;
+            }
+
+.signUp_form {
+    display: none;
+    max-width: 400px;
+    padding: 20px 40px;
+    background: #fff;
+    height: 300px;
+    margin: auto;
+    display: block;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+    position: relative;
+    transform: translateY(-100px);
+    z-index: 500;
+    border: 1px solid #eee;
+}
+
+form.up {
+    transform: translateY(-180px);
+}
+
+h1 {
+    color: #FF4081;
+    font-family: 'Dancing Script', cursive;
+}
+
+.singupForm_btn {
+    background: #fff;
+    padding: 5px;
+    width: 150px;
+    height: 35px;
+    border: 1px solid #FF4081;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 50px #FF4081 inset;
+    color: #fff;
+}
+
+    .singupForm_btn:hover {
+        box-shadow: 0 0 #FF4081 inset;
+        color: #FF4081;
+    }
+
+    .singupForm_btn:focus {
+        outline: none;
+    }
+
+.form-group {
+    position: relative;
+    font-size: 15px;
+    color: #666;
+}
+
+    .form-group + .form-group {
+        margin-top: 30px;
+    }
+
+    .form-group .form-label {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 5px;
+        transition: 0.3s;
+    }
+
+    .form-group .form-control {
+        width: 100%;
+        position: relative;
+        z-index: 3;
+        height: 35px;
+        background: none;
+        border: none;
+        padding: 5px 0;
+        transition: 0.3s;
+        border-bottom: 1px solid #777;
+        color: #555;
+    }
+
+        .form-group .form-control:invalid {
+            outline: none;
+        }
+
+        .form-group .form-control:focus, .form-group .form-control:valid {
+            outline: none;
+            box-shadow: 0 1px #FF4081;
+            border-color: #FF4081;
+        }
+
+            .form-group .form-control:focus + .form-label, .form-group .form-control:valid + .form-label {
+                font-size: 12px;
+                color: #FF4081;
+                transform: translateY(-15px);
+            }
+
+.alert {
+    position: absolute;
+    color: #f00;
+    font-size: 16px;
+    right: -180px;
+    top: -300px;
+    z-index: 200;
+    padding: 30px 25px;
+    background: #fff;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0, 0);
+    -moz-transition: linear 0.4s 0.6s;
+    -o-transition: linear 0.4s 0.6s;
+    -webkit-transition: linear 0.4s;
+    -webkit-transition-delay: 0.6s;
+    transition: linear 0.4s 0.6s;
+}
+
+    .alert:after, .alert:before {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: #fff;
+        left: -19px;
+        bottom: -8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+    }
+
+    .alert:before {
+        width: 15px;
+        height: 15px;
+        left: -35px;
+        bottom: -25px;
+    }
+
+.wrong-entry {
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .wrong-entry .alert {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+
+@-webkit-keyframes eye-blink {
+    to {
+        height: 30px;
+    }
+}
+
+@keyframes eye-blink {
+    to {
+        height: 30px;
+    }
+}
+
+@-webkit-keyframes wrong-log {
+    0%, 100% {
+        left: 0px;
+    }
+
+    20%, 60% {
+        left: 20px;
+    }
+
+    40%, 80% {
+        left: -20px;
+    }
+}
+
+@keyframes wrong-log {
+    0%, 100% {
+        left: 0px;
+    }
+
+    20%, 60% {
+        left: 20px;
+    }
+
+    40%, 80% {
+        left: -20px;
+    }
+}
+
+/* The container */
+.radioContainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+    /* Hide the browser's default radio button */
+    .radioContainer input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radioContainer:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radioContainer input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radioContainer input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radioContainer .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}

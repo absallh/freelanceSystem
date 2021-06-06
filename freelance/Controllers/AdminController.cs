@@ -158,7 +158,28 @@ namespace freelance.Controllers
         }
         public ActionResult EditMember(string id)
         {
-            return View();
+            var user = db.Users.Where(a => a.Id == id).SingleOrDefault();
+            RegisterViewModel model = new RegisterViewModel
+            {
+                Email = user.Email,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                UserType = user.UserType,
+                phone = user.PhoneNumber
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditMember(RegisterViewModel model)
+        {
+            var user = db.Users.Where(a => a.Email == model.Email).SingleOrDefault();
+            user.firstName = model.firstName;
+            user.lastName = model.lastName;
+            user.PhoneNumber = model.phone;
+            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
         }
     }
 }
