@@ -211,12 +211,12 @@
             transform: translate(-4px, -120px) rotate(160deg);
         }
 
-    .center .hands .pandafinger {
+    .center .hands .finger {
         position: relative;
         z-index: 0;
     }
 
-        .center .hands .pandafinger .bone {
+        .center .hands .finger .bone {
             width: 20px;
             height: 20px;
             border: 2px solid #243946;
@@ -225,7 +225,7 @@
             background-color: #fac555;
         }
 
-        .center .hands .pandafinger .nail {
+        .center .hands .finger .nail {
             position: absolute;
             left: 0;
             top: 10px;
@@ -237,28 +237,28 @@
             z-index: -1;
         }
 
-        .center .hands .pandafinger:nth-child(1),
-        .center .hands .pandafinger:nth-child(3) {
+        .center .hands .finger:nth-child(1),
+        .center .hands .finger:nth-child(3) {
             left: 4px;
             z-index: 1;
         }
 
-            .center .hands .pandafinger:nth-child(1) .bone,
-            .center .hands .pandafinger:nth-child(3) .bone {
+            .center .hands .finger:nth-child(1) .bone,
+            .center .hands .finger:nth-child(3) .bone {
                 height: 10px;
             }
 
-        .center .hands .pandafinger:nth-child(3) {
+        .center .hands .finger:nth-child(3) {
             left: -4px;
         }
 
-        .center .hands .pandafinger:nth-child(2) {
+        .center .hands .finger:nth-child(2) {
             top: -5px;
             z-index: 2;
         }
 
-        .center .hands .pandafinger:nth-child(1) .nail,
-        .center .hands .pandafinger:nth-child(3) .nail {
+        .center .hands .finger:nth-child(1) .nail,
+        .center .hands .finger:nth-child(3) .nail {
             top: 0px;
         }
 

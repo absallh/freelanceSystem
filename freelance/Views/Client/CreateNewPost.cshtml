@@ -13,11 +13,28 @@
         document.getElementById('EditPost').submit();
     }
 </script>
+<div class="happyContainer" id="success">
+    <div id="success-box">
+        <div class="dot"></div>
+        <div class="dot two"></div>
+        <div class="successFace">
+            <div class="emojiEye"></div>
+            <div class="emojiEye right"></div>
+            <div class="mouth1 happy"></div>
+        </div>
+        <div class="shadow scale"></div>
+        <div class="message">
+            <h1 class="alert" style="color: white">Success!</h1>
+            <p>yay, everything is working.</p>
+        </div>
+        <button class="button-box" onclick="document.getElementById('createPostForm').submit();"><h1 class="green">continue</h1></button>
+    </div>
+</div>
 <div class="addPostBody">
     <div class="createPost" id="app">
         <div class="add-product" :class="{'open': formOpen}">
             <div class="button-copy" v-show="!formOpen" @@click="formOpen = true">Add Product</div>
-            @using (Html.BeginForm("CreateNewPost", "Client", FormMethod.Post, new { @class = "createPostForm" }))
+            @using (Html.BeginForm("CreateNewPost", "Client", FormMethod.Post, new { @class = "createPostForm", id = "createPostForm" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="radioform">
@@ -45,7 +62,7 @@
                     @*<textarea class="form--element textarea" v-model="productData.description" placeholder="Description" name="Description"></textarea>*@
                 </div>
 
-                <button type="submit" class="submit-button" onclick="">Add Product</button>
+                <button type="button" class="submit-button" >Add Product</button>
                 <div class="cancel"><span @@click="cancel()">Cancel</span></div>
             }
         </div>

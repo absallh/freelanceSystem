@@ -3,30 +3,38 @@
 <head>
     <style>
         .holeOut {
-      -webkit-animation-name: holeOut;
-      animation-name: holeOut;
-      animation-fill-mode: forwards;
+            -webkit-animation-name: holeOut;
+            animation-name: holeOut;
+            animation-fill-mode: forwards;
         }
 
-    @@-webkit-keyframes holeOut {
-      0% {
-        opacity: 1;
-        transform-origin: 50% 50%;
-        transform: scale(1, 1) rotateY(0deg); }
-      100% {
-        opacity: 0;
-        transform-origin: 50% 50%;
-        transform: scale(0, 0) rotateY(180deg); } }
+        @@-webkit-keyframes holeOut {
+            0% {
+                opacity: 1;
+                transform-origin: 50% 50%;
+                transform: scale(1, 1) rotateY(0deg);
+            }
 
-    @@keyframes holeOut {
-      0% {
-        opacity: 1;
-        transform-origin: 50% 50%;
-        transform: scale(1, 1) rotateY(0deg); }
-      100% {
-        opacity: 0;
-        transform-origin: 50% 50%;
-        transform: scale(0, 0) rotateY(180deg); } }
+            100% {
+                opacity: 0;
+                transform-origin: 50% 50%;
+                transform: scale(0, 0) rotateY(180deg);
+            }
+        }
+
+        @@keyframes holeOut {
+            0% {
+                opacity: 1;
+                transform-origin: 50% 50%;
+                transform: scale(1, 1) rotateY(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform-origin: 50% 50%;
+                transform: scale(0, 0) rotateY(180deg);
+            }
+        }
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,6 +71,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/radioInput.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/css/popup.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/searchInput.css" />
+    <link href="~/Content/notify.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <!-- Side Navbar -->
@@ -207,6 +216,6 @@
     <!-- Main File-->
     <script src="~/Scripts/js/front.js"></script>
     <script src="~/Scripts/js/popup.js"></script>
-    <script src="~/Scripts/searchInput.js"></script>
+    <script src="~/Scripts/notify.js"></script>
 </body>
 </html>

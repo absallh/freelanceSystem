@@ -11,6 +11,7 @@
     </div>
     <span class="close" onclick="searchToggle(this, event);"></span>
 </div>
+<script src="~/Scripts/searchInput.js"></script>
 @using (Html.BeginForm("Myposts", "Client", FormMethod.Post, new { id = "actionType", @class = "displaynone" }))
 {
     <input type="hidden" id="" name="id" />
