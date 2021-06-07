@@ -3,7 +3,14 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_WallLayout.cshtml";
 }
-
+<form class="holeOut" method="post" id="SavePostForm" action="SaveSelectedPost"><input type="hidden" name="id" id="inputForm" /></form>
+<form class="holeOut" method="post" id="SendProposal" action="addProposal"><input type="hidden" name="id" id="sendProsalInput" /></form>
+<script>
+    function sendProposal(id) {
+        document.querySelector('#sendProsalInput').value = id;
+        document.querySelector('#SendProposal').submit();
+    }
+</script>
 <div class="search-wrapper" style="top:5%">
     <div class="input-holder">
         <input type="text" class="search-input" id="postsSearch" placeholder="Type to search" />
@@ -20,8 +27,7 @@
                 <h4>@Html.DisplayFor(model => item.postTime)</h4>
                 <h1>$@Html.DisplayFor(model => item.budget)</h1>
                 <p>@Html.DisplayFor(model => item.JobDescription)</p>
-                <button>Add proposal</button>
-                <button>Save Post</button>
+                <button onclick="sendProposal('@Html.DisplayFor(model => item.id)')">Add proposal</button>
             </div>
         </div>
     </div>

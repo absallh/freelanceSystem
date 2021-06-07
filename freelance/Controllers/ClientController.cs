@@ -74,8 +74,8 @@ namespace Client.Controllers
                 SqlCommand cmd = sqlconn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 model.id = Guid.NewGuid().ToString().GetHashCode().ToString("x");
-                cmd.CommandText = "insert into Posts Values('" + model.id + "','" + user.firstName + "','" + model.JobDescription + "','" +
-                     DateTime.Now.ToString("MM.dd.yyyy") + "','Wait','" + model.budget + "','" + user.Email + "' )";
+                cmd.CommandText = "insert into Posts Values('" + model.id + "','" + user.firstName + "','" + model.JobDescription + "', CURRENT_TIMESTAMP" +
+                    ",'Wait','" + model.budget + "','" + user.Email + "' )";
                 cmd.ExecuteNonQuery();
                 sqlconn.Close();
             }
